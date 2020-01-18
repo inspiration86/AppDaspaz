@@ -1,16 +1,18 @@
 import React, {Component} from "react";
 import {Button, Container, Content, Text} from "native-base";
-import {StyleSheet} from "react-native";
+import {StyleSheet,View} from "react-native";
 
 class Home extends Component<Props> {
     render() {
-        return (
-            <Container style={styles.Container}>
+        return (<View>
+ <Container style={styles.Container}>
                 <Content>
                     <Button style={styles.buttonstyle}   rounded onPress={()=>this.props.navigation.navigate('Splash')}><Text> splash </Text></Button>
                     <Button style={styles.buttonstyle}   rounded onPress={()=>this.props.navigation.negative('Login')}><Text> login </Text></Button>
                 </Content>
             </Container>
+        </View>
+           
         );
     }
 }
