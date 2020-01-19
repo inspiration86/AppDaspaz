@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
+import {StyleSheet} from 'react-native'
 import { Container, Content, Button, Text} from 'native-base';
 export default class SelectUser extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            }
+        }
     render() {
         return(
             <Container style={styles.Container}>
                 <Content>
-                    <Button style={styles.buttonstyle}   rounded ><Text> ویژه همکاران </Text></Button>
+                    <Button style={styles.buttonstyle}  rounded onPress={() => this.props.navigation.push('Login')} ><Text> ویژه همکاران </Text></Button>
                     <Button style={styles.buttonstyle}   rounded ><Text> ویژه مشتریان </Text></Button>
                 </Content>
             </Container>

@@ -1,75 +1,85 @@
 import React, {Component} from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    TextInput,
-    TouchableHighlight,
-    Image,
-    Alert
-} from 'react-native';
-import {Header} from '../index';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import {faKey, faUserAlt} from "@fortawesome/free-solid-svg-icons";
+import {Alert, Image, StyleSheet, Text, TextInput, TouchableHighlight, View} from "react-native";
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faEye} from "@fortawesome/free-solid-svg-icons";
 
-class login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mobile   : '',
+            mobile: '',
             password: '',
         }
     }
 
     onClickListener = (viewId) => {
-        Alert.alert("عضويت", " بي تربيت "+viewId);
+        Alert.alert("ایجاد حساب کاربری", " بی تربیت " + viewId);
     }
+
     render() {
         return (
-
             <View style={styles.container}>
-                <Header/>
-                <Image style={styles.logoIcon} source={require('../../../assets/images/logo1.png')}/>
-                <View style={styles.inputContainer}>
-                    {/*<FontAwesomeIcon icon={ faUserAlt } style={ styles.icon }/>*/}
-                    <Image style={styles.inputIcon} source={{uri:'https://banner2.cleanpng.com/20180920/efk/kisspng-user-logo-information-service-design-5ba34f88a0c3a6.5907352915374293846585.jpg'}}/>
-
-                    {/*<Image style={styles.inputIcon} source={{uri: 'https://avatars0.githubusercontent.com/u/17571969?v=3&s=400'}}/>*/}
-                    <TextInput style={styles.inputs}
-                               placeholder="شماره موبايل"
-                               keyboardType = 'numeric'
-                               underlineColorAndroid='transparent'
-                               onChangeText={(mobile) => this.setState({mobile})}/>
-                </View>
-                <View style={styles.inputContainer}>
-                    <Image style={styles.inputIcon} source={{uri: 'https://img.icons8.com/color/40/000000/password.png'}}/>
-                    {/*<FontAwesomeIcon icon={ faKey } style={ styles.icon }/>*/}
-                    <TextInput style={styles.inputs}
-                               placeholder="رمز عبور"
-                               secureTextEntry={true}
-                               underlineColorAndroid='transparent'
-                               onChangeText={(password) => this.setState({password})}/>
+                <View style={{flex: 3, marginTop: '10%'}}>
+                    <Image style={styles.logoIcon} source={require('../../../assets/images/logo2.png')}/>
                 </View>
 
-                <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.onClickListener('login')}>
-                    <Text style={styles.loginText}>ورود</Text>
-                </TouchableHighlight>
+                <View style={{flex: 5}}>
+                    <View style={styles.inputContainer}>
+                        {/*<FontAwesomeIcon icon={ faUserAlt } style={ styles.icon }/>*/}
+                        <Image style={styles.inputIcon}
+                               source={require('../../../assets/images/mobile1.png')}/>
 
-                <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('restore_password')}>
-                    <Text style={styles.forgetPassword}>رمز عبور را فراموش کرده ايد؟</Text>
-                </TouchableHighlight>
+                        {/*<Image style={styles.inputIcon} source={{uri: 'https://avatars0.githubusercontent.com/u/17571969?v=3&s=400'}}/>*/}
+                        <TextInput style={styles.inputs}
+                                   placeholder="شماره موبایل"
+                                   keyboardType='numeric'
+                                   underlineColorAndroid='transparent'
+                                   onChangeText={(mobile) => this.setState({mobile})}/>
+                    </View>
+                    <View style={styles.inputContainer}>
+                        {/*<FontAwesomeIcon icon={faEye} size={25} style={styles.inputIcon}/>*/}
+                        <Image style={styles.inputIcon}
+                               source={{uri: 'https://img.icons8.com/color/40/000000/password.png'}}/>
+                        {/*<FontAwesomeIcon icon={ faKey } style={ styles.icon }/>*/}
+                        <TextInput style={styles.inputs}
+                                   placeholder="رمز عبور"
+                                   secureTextEntry={true}
+                                   underlineColorAndroid='transparent'
+                                   onChangeText={(password) => this.setState({password})}/>
+                    </View>
+                    <View style={{flex: 2,marginTop:'8%'}}>
+                        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]}
+                                            underlayColor='#00bfa5'   onPress={() => this.onClickListener('login')}>
+                            <Text style={styles.loginText}>ورود</Text>
+                        </TouchableHighlight>
 
-                <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('register')}>
-                    <Text style={styles.register}> عضويت</Text>
-                </TouchableHighlight>
+                    </View>
+                </View>
+
+                <View style={{height: 50, flexDirection: 'row-reverse', backgroundColor: '#00bfa5'}}>
+
+                    <View style={{flex: 1, alignItems: 'center', backgroundColor: '#fa1d7a'}}>
+                        <Text style={{color: '#fff', marginTop: '5%', fontFamily: 'IRANSansMobile'}}
+
+                              onPress={() => this.props.navigation.push('RegisterSellerUser')}>عضویت</Text>
+                    </View>
+                    <View style={{flex: 1, alignItems: 'center'}}>
+                        <Text style={{color: '#fff', marginTop: '5%', fontFamily: 'IRANSansMobile'}}
+
+                        >فراموشی رمز </Text>
+
+                    </View>
+                </View>
             </View>
+
         );
     }
 }
+
 const styles = StyleSheet.create({
-    icon:{
+    icon: {
         color: '#777777',
-        marginLeft:10
+        marginLeft: 10
     },
     container: {
         flex: 1,
@@ -80,64 +90,66 @@ const styles = StyleSheet.create({
     inputContainer: {
         borderBottomColor: '#777777',
         backgroundColor: '#FFFFFF',
-        borderRadius:30,
+        borderRadius: 30,
         borderBottomWidth: 1,
         // width:100%,
         // height:45,
-        marginLeft:10,
-        marginRight:10,
-        marginBottom:20,
+        marginLeft: 10,
+        marginRight: 10,
+        marginBottom: 20,
         flexDirection: 'row',
-        alignItems:'center'
+        alignItems: 'center'
     },
-    inputs:{
-        height:45,
-        marginLeft:16,
+    inputs: {
+        height: 45,
+        marginLeft: 16,
         borderBottomColor: '#FFFFFF',
-        flex:1,
-        fontSize:15,
-        textAlign:'center',
-        fontFamily:'IRANSansWeb(FaNum)',
+        flex: 1,
+        fontSize: 15,
+        textAlign: 'center',
+        fontFamily: 'IRANSansWeb(FaNum)',
     },
 
     buttonContainer: {
-        height:45,
-        flexDirection: 'row',
+        height: 45,
+        // flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom:20,
-        width:350,
-        borderRadius:30,
-        fontFamily:'IRANSansWeb(FaNum)'
+        marginBottom: 20,
+        width: 350,
+        borderRadius: 30,
+        fontFamily: 'IRANSansWeb(FaNum)'
     },
     loginButton: {
 
         backgroundColor: "#fa1d7a",
 
     },
-    inputIcon:{
-        width:30,
-        height:30,
-        marginRight:15,
+    inputIcon: {
+        width: 40,
+        height: 40,
+        marginRight: 15,
         justifyContent: 'center',
-        marginLeft:10
+        marginLeft: 10
     },
-    logoIcon:{
-        width:140,
-        height:140,
+    logoIcon: {
+        width: 140,
+        height: 140,
         justifyContent: 'center',
     },
     loginText: {
-        fontFamily:'IRANSansWeb(FaNum)',
-        fontSize:20,
+        fontFamily: 'IRANSansWeb(FaNum)',
+        fontSize: 20,
         color: 'white',
     },
-    forgetPassword:{
-        fontFamily:'IRANSansWeb(FaNum)'
+    forgetPassword: {
+        fontFamily: 'IRANSansWeb(FaNum)'
     },
-    register:{
-        fontFamily:'IRANSansWeb(FaNum)'
+    register: {
+        fontFamily: 'IRANSansWeb(FaNum)'
 
     }
 });
-export default login;
+
+
+export default Login;
