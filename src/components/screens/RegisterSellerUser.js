@@ -13,7 +13,7 @@ import { Container, Header, Content, Tab, Tabs } from 'native-base';
 import Tab1 from "../components/screens/StepAtributUser";
 import Tab2 from "../components/screens/StepUploadFileUser";
 import Tab3 from "../components/screens/StepFinalUser";
-class App extends Component {
+class RegisterSellerUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
 
     }
 });
-export default App;
+export default RegisterSellerUser;
