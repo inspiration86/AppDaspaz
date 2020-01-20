@@ -43,10 +43,8 @@ const CustomDrawerComponent = props => (
                     </View>
                 </Body>
             </Body>
-
             <Right></Right>
         </Header>
-
         <ScrollView>
             <DrawerItems {...props} />
         </ScrollView>

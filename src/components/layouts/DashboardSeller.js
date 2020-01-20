@@ -4,7 +4,9 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faBars} from "@fortawesome/free-solid-svg-icons";
-
+import ElanScreen from '../screens/ElanScreen';
+import SefareshtScreen from '../screens/SefareshatScreen';
+import GHavaninScreen from '../screens/GhavaninScreen';
 import React from "react";
 import {Body, Footer, Header, Icon, Left, Right} from "native-base";
 import {heightPercentageToDP as hp} from "react-native-responsive-screen";
@@ -14,10 +16,7 @@ class MyHomeScreen extends React.Component {
     render() {
         return (
             <View>
-                <Button
-                    onPress={() => this.props.navigation.openDrawer()}
-                    title="Go to notifications"
-                />
+                <Text>به زودی طراحی می شود</Text>
             </View>
 
         );
@@ -29,14 +28,7 @@ class MyNotificationsScreen extends React.Component {
     render() {
         return (
             <View>
-                <Button
-                    onPress={() => this.props.navigation.goBack()}
-                    title="Go back home"
-                />
-                <Button
-                    onPress={() => this.props.navigation.openDrawer()}
-                    title="Go to notifications"
-                />
+                <Text>به زودی طراحی می شود</Text>
             </View>
         );
     }
@@ -68,8 +60,8 @@ const HomeNavigator = createStackNavigator({
 
         }
     });
-const SettingNavigator = createStackNavigator({
-        Home: MyNotificationsScreen
+const ElanScreenNavigator = createStackNavigator({
+        Home: ElanScreen
     },
     {
         defaultNavigationOptions: ({navigation}) => {
@@ -94,7 +86,58 @@ const SettingNavigator = createStackNavigator({
 
         }
     });
+const SefareshNavigator = createStackNavigator({
+        Home: SefareshtScreen
+    },
+    {
+        defaultNavigationOptions: ({navigation}) => {
+            return {
+                title: 'سفارشات مشتري',
+                headerStyle: {
+                    backgroundColor: '#00bfa5',
+                    color:'#ffffff',
+                    fontFamily:'IRANSansWeb(FaNum)',
 
+                },
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                    fontFamily: 'IRANSansWeb(FaNum)',
+                    color: '#ffffff',
+                    fontSize: 16
+                },
+                headerRight: (
+                    <FontAwesomeIcon icon={faBars} size={20} style={{color:'#ffffff',marginRight:10}}  onPress={() => navigation.openDrawer()}/>
+                )
+            }
+
+        }
+    });
+const RulesNavigator = createStackNavigator({
+        Home: SefareshtScreen
+    },
+    {
+        defaultNavigationOptions: ({navigation}) => {
+            return {
+                title: 'قوانين موجود ',
+                headerStyle: {
+                    backgroundColor: '#00bfa5',
+                    color:'#ffffff',
+                    fontFamily:'IRANSansWeb(FaNum)',
+
+                },
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                    fontFamily: 'IRANSansWeb(FaNum)',
+                    color: '#ffffff',
+                    fontSize: 16
+                },
+                headerRight: (
+                    <FontAwesomeIcon icon={faBars} size={20} style={{color:'#ffffff',marginRight:10}}  onPress={() => navigation.openDrawer()}/>
+                )
+            }
+
+        }
+    });
 const styles = StyleSheet.create({
     container: {
         height: 200,
@@ -179,13 +222,13 @@ const MyDrawerNavigator = createDrawerNavigator({
             screen: HomeNavigator,
         },
         'پیام ها/اعلان ها': {
-            screen: SettingNavigator,
+            screen: ElanScreenNavigator,
             headerStyle:{
                 alignItems:'center'
             },
         },
         'سفارشات مشتري': {
-            screen: HomeNavigator,
+            screen: SefareshNavigator,
         },
         'سفارشات در حال آماده سازي': {
             screen: HomeNavigator,
@@ -197,7 +240,7 @@ const MyDrawerNavigator = createDrawerNavigator({
             screen: HomeNavigator,
         },
         'قوانين موجود':{
-            screen: HomeNavigator,
+            screen: RulesNavigator,
         },
         'تماس با ما': {
             screen: HomeNavigator,
