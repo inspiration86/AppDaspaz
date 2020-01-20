@@ -33,7 +33,7 @@ class MessegeScreen extends Component {
               <Icon
                 style={styles.menuicone}
                 name="menu"
-                onPress={() => this.props.navigation.openDrawer()}
+                onPress={() => this.props.navigation.closeDrawer()}
               />
             </Left>
             <Body>

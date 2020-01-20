@@ -11,15 +11,15 @@ import {
 I18nManager.allowRTL(false);
 import {createAppContainer} from 'react-navigation';
 import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
-import MessegeScreen from './screens/messegeScreen';
-import ElanScreen from './screens/ElanScreen';
-import SefareshtScreen from './screens/SefareshatScreen';
-import SefareshatAmadehScreen from './screens/SefareshatAmdeh';
+import MessegeScreen from '../screens/messegeScreen';
+import ElanScreen from '../screens/ElanScreen';
+import SefareshtScreen from '../screens/SefareshatScreen';
+import SefareshatAmadehScreen from '../screens/SefareshatAmdeh';
 import {Header, Left, Right, Body, Container, Footer, Icon} from 'native-base';
-import DramadScreen from './screens/DramadhaScreen';
-import SabtTavanScreen from './screens/SabtTavanScreen';
-import GHavaninScreen from './screens/GhavaninScreen';
-import TamasScreen from './screens/TamasScreen';
+import DramadScreen from '../screens/DramadhaScreen';
+import SabtTavanScreen from '../screens/SabtTavanScreen';
+import GHavaninScreen from '../screens/GhavaninScreen';
+import TamasScreen from '../screens/TamasScreen';
 //import {Icon} from 'react-native-elements';
 const {width} = Dimensions.get('window');
 export default class SellerDrawer extends Component {
@@ -34,7 +34,7 @@ const CustomDrawerComponent = props => (
             <Left />
             <Body>
                 <Image
-                    source={require('./assets/images/logo3.png')}
+                    source={require('../../../assets/images/logo3.png')}
                     style={styles.containerimage}
                 />
                 <Body>
