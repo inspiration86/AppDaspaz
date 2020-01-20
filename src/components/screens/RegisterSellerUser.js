@@ -37,7 +37,7 @@ class StepAtributUser extends React.Component {
                     <Image style={styles.logoIcon} source={require('../../../assets/images/logo2.png')}/>
                 </View>
                 <View style={{flex: 1, marginTop: 50, justifyContent: 'center', flexDirection: 'row'}}>
-                    <Text style={{fontSize: 22, fontFamily: 'IRANSansMobile'}}>فرم عضویت در آپ دس پز</Text>
+                    <Text style={{fontSize: 22, fontFamily: 'IRANSansMobile'}}>فرم عضویت دس پز</Text>
                 </View>
                 <View styles={{flex: 14}}>
                     <View style={styles.responsiveBox}>
@@ -287,7 +287,7 @@ class StepFinalUser extends React.Component {
                         </View>
                         <View style={{flex:8,textAlign:'right'}}>
                         <Text style={{fontFamily: 'IRANSansMobile',}}>
-                            شرایط آپ را می پذیرم
+                            شرایط اپ را می پذیرم
                         </Text>
                         </View>
 
@@ -332,8 +332,6 @@ const RootStack = createStackNavigator({
                 color: '#ffffff',
                 fontSize: 16
             },
-
-
         }),
     },
     stepUploadFile: {
@@ -342,7 +340,6 @@ const RootStack = createStackNavigator({
             title: `مرحله دوم:آپلود مدارک  `,
             headerStyle: {
                 backgroundColor: '#00bfa5',
-
             },
             headerTitleStyle: {
                 // alignSelf:'right',

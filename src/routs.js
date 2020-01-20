@@ -1,5 +1,6 @@
-//import {Login,Splash,Home} from '../index';
-import Login from './components/screens/Login';
+//import {SellerLogin,Splash,Home} from '../index';
+import SellerLogin from './components/screens/SellerLogin';
+import CustomerLogin from './components/screens/CustomerLogin';
 import Splash from './components/screens/Splash';
 import SelectUser from './components/screens/SelectUser';
 import RegisterSellerUser from "./components/screens/RegisterSellerUser";
@@ -9,15 +10,23 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 const RootStack = createStackNavigator({
 
-        Splash: {screen: Splash},
+        Splash: {screen: Splash,   navigationOptions: ({navigation}) => ({
+                header: null,
+            })},
         SelectUser: {
             screen: SelectUser,
             navigationOptions: ({navigation}) => ({
                 header: null,
             })
         },
-        Login: {
-            screen: Login,
+        SellerLogin: {
+            screen: SellerLogin,
+            navigationOptions: ({navigation}) => ({
+                header: null,
+            })
+        },
+        CustomerLogin: {
+            screen: CustomerLogin,
             navigationOptions: ({navigation}) => ({
                 header: null,
             })

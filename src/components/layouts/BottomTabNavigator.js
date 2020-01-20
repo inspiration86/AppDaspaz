@@ -3,7 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Icon} from 'native-base';
 import {createAppContainer} from 'react-navigation';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
-import Login from '../screens/Login';
+import SellerLogin from '../screens/SellerLogin';
 import Home from '../screens/Home';
 import SelectUser from '../screens/SelectUser';
 import Rules from '../screens/Rules';
@@ -28,9 +28,9 @@ const AppMaterialBottomTabNavigator = createMaterialBottomTabNavigator(
             },
         },
         Login: {
-            screen: Login,
+            screen: SellerLogin,
             navigationOptions: {
-                tabBarLabel: 'Login',
+                tabBarLabel: 'SellerLogin',
                 tabBarIcon: ({tintColor}) => (
                     <View>
                         <Icon style={[{color: tintColor}]} size={25} name={'ios-person'} />

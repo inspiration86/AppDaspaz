@@ -3,7 +3,7 @@ import {Alert, Image, StyleSheet, Text, TextInput, TouchableHighlight, View} fro
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faEye} from "@fortawesome/free-solid-svg-icons";
 
-class Login extends Component {
+class SellerLogin extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -152,4 +152,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Login;
+export default SellerLogin;
