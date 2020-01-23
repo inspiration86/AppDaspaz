@@ -3,7 +3,7 @@ import SellerLogin from './components/screens/SellerLogin';
 import CustomerLogin from './components/screens/CustomerLogin';
 import Splash from './components/screens/Splash';
 import SelectUser from './components/screens/SelectUser';
-import RegisterSellerUser from "./components/screens/RegisterSellerUser";
+import RegisterSellerUser from "./components/screens/SellerScreens/RegisterSellerUser";
 import DashboardSeller from './components/layouts/DashboardSeller';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';

@@ -6,9 +6,9 @@ import {
     ScrollView,
     StyleSheet,
     Dimensions,
-    I18nManager
+    ImageBackground,
 } from 'react-native';
-I18nManager.allowRTL(false);
+
 import {createAppContainer} from 'react-navigation';
 import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
 import MessegeScreen from '../screens/messegeScreen';
@@ -20,9 +20,11 @@ import DramadScreen from '../screens/DramadhaScreen';
 import SabtTavanScreen from '../screens/SabtTavanScreen';
 import GHavaninScreen from '../screens/GhavaninScreen';
 import TamasScreen from '../screens/TamasScreen';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 //import {Icon} from 'react-native-elements';
 const {width} = Dimensions.get('window');
-export default class SellerDrawer extends Component {
+const windowHeight = Dimensions.get('window').height;
+export default class App extends Component {
     render() {
         return <AppContainer />;
     }
@@ -31,33 +33,46 @@ export default class SellerDrawer extends Component {
 const CustomDrawerComponent = props => (
     <View style={{flex: 1}}>
         <Header style={styles.container}>
-            <Left />
-            <Body>
-                <Image
-                    source={require('../../../assets/images/logo3.png')}
-                    style={styles.containerimage}
-                />
-                <Body>
-                    <View style={styles.containerview1}>
-                        <Text style={styles.containertext}>arka</Text>
-                    </View>
-                </Body>
-            </Body>
-            <Right></Right>
+            <ImageBackground
+                source={require('../../../assets/images/logo1.png')}
+                style={{width: '102%', height: '100%', opacity: 0.3}}
+                resizeMode="stretch"></ImageBackground>
+            <Image
+                source={require('../../../assets/images/logo1.png')}
+                style={styles.containerimage}
+            />
         </Header>
+
         <ScrollView>
             <DrawerItems {...props} />
         </ScrollView>
+
         <Footer style={styles.containerfooter}>
             <View style={styles.containerview}>
-                <Icon type="FontAwesome" name="send-o" style={styles.containericon} />
-                <Icon type="FontAwesome" name="twitter" style={styles.containericon} />
-                <Icon type="FontAwesome" name="facebook" style={styles.containericon} />
-                <Icon
-                    type="FontAwesome"
-                    name="instagram"
-                    style={styles.containericon}
-                />
+                <TouchableOpacity>
+                    <Icon type="FontAwesome" name="send-o" style={styles.containericon} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Icon
+                        type="FontAwesome"
+                        name="google-plus"
+                        style={styles.containericon}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Icon
+                        type="FontAwesome"
+                        name="whatsapp"
+                        style={styles.containericon}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Icon
+                        type="FontAwesome"
+                        name="instagram"
+                        style={styles.containericon}
+                    />
+                </TouchableOpacity>
             </View>
         </Footer>
     </View>
@@ -65,32 +80,41 @@ const CustomDrawerComponent = props => (
 
 const AppDrawerNavigator = createDrawerNavigator(
     {
-        'صندوق پيام': MessegeScreen,
+        'صندوق پیام': MessegeScreen,
         'اعلان': ElanScreen,
-        'سفارشات مشتري': SefareshtScreen,
-        'سفارشات در حال آماده سازي': SefareshatAmadehScreen,
+        'سفارشات مشتری': SefareshtScreen,
+        'سفارشات در حال آماده سازی': SefareshatAmadehScreen,
         'درآمدها': DramadScreen,
-        'ثبت توانايي ها': SabtTavanScreen,
-        'قوانين موجود': GHavaninScreen,
+        'ثبت توانایی ها': SabtTavanScreen,
+        'قوانین موجود': GHavaninScreen,
         'تماس با ما': TamasScreen,
     },
     {
         drawerPosition: 'right',
         contentComponent: CustomDrawerComponent,
 
-        drawerWidth: width - 110,
+        drawerWidth: width - 80,
+        useNativeAnimations: true,
+        drawerBackgroundColor: 'white',
         contentOptions: {
             activeTintColor: '#fff',
             inactiveTintColor: '#000',
-            activeBackgroundColor: '#F06',
+            activeBackgroundColor: '#80009d',
             inactiveBackgroundColor: '#ffff',
+            backgroundColor: '#fff',
+            //activeText: 'red',
             itemsContainerStyle: {
-                marginHorizontal: 8,
-                border: 10,
+                marginHorizontal: 6,
+                marginTop: 10,
+                marginBottom: 10,
+            },
+            iconContainerStyle: {
+                opacity: 1,
+                color: 'red',
             },
             itemStyle: {
-                height: 40,
-                borderRadius: 20,
+                height: 45,
+                borderRadius: 5,
             },
         },
     },
@@ -99,44 +123,52 @@ const AppDrawerNavigator = createDrawerNavigator(
 const AppContainer = createAppContainer(AppDrawerNavigator);
 const styles = StyleSheet.create({
     container: {
-        height: 200,
-        backgroundColor: '#F06',
+        height: 150,
+        backgroundColor: '#80009d',
         alignItems: 'center',
         justifyContent: 'center',
     },
     containerimage: {
         borderRadius: 75,
-        width: 120,
-        height: 120,
-        marginTop: 15,
+        width: 90,
+        height: 90,
+        marginTop: 5,
+        marginBottom: 20,
+        // marginLeft: '30%',
+        position: 'absolute',
     },
     containericon: {
         color: '#ffff',
         fontSize: 22,
     },
-    containerview1: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-        marginTop: -10,
-        flexDirection: 'row',
-    },
+
     containerview: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         marginTop: 15,
     },
+
     containerfooter: {
-        backgroundColor: '#F06',
+        // height:35,
+        backgroundColor: '#80009d',
         borderTopWidth: 1,
-        borderTopColor: '#F06',
+        borderTopColor: '#a43eac',
         flexDirection: 'row',
         justifyContent: 'space-around',
+    },
+    containerview1: {
+        flexDirection: 'row',
+        //justifyContent: 'space-evenly',
+        marginTop: 5,
     },
     containertext: {
         fontSize: 20,
         justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: -90,
+        marginTop: 80,
         color: '#ffff',
+        position: 'relative',
     },
 });

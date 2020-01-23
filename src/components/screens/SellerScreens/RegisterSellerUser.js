@@ -34,7 +34,7 @@ class StepAtributUser extends React.Component {
             <View style={styles.container}>
                 {/*<ScrollView>*/}
                 <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row'}}>
-                    <Image style={styles.logoIcon} source={require('../../../assets/images/logo2.png')}/>
+                    <Image style={styles.logoIcon} source={require('../../../../assets/images/logo2.png')}/>
                 </View>
                 <View style={{flex: 1, marginTop: 50, justifyContent: 'center', flexDirection: 'row'}}>
                     <Text style={{fontSize: 22, fontFamily: 'IRANSansMobile'}}>فرم عضویت دس پز</Text>

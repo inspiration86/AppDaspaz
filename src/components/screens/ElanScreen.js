@@ -7,7 +7,7 @@ class ElanScreen extends Component {
       <Icon
         type="FontAwesome"
         name="bell"
-        style={{fontSize: 20, color: tintColor}}
+        style={{fontSize: 20, color: 'red'}}
       />
     ),
   };

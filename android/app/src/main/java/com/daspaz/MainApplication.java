@@ -1,5 +1,5 @@
 package com.daspaz;
-
+import com.facebook.react.modules.i18nmanager.I18nUtil;
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
@@ -43,6 +43,9 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+     I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
+
+     sharedI18nUtilInstance.allowRTL(getApplicationContext(), true);
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this); // Remove this line if you don't want Flipper enabled
   }
