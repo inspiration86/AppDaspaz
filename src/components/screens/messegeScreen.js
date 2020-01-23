@@ -11,46 +11,13 @@ import {
 } from 'native-base';
 
 class MessegeScreen extends Component {
-  static navigationOptions = {
-    drawerIcon: ({tintColor}) => (
-      <Icon
-        type="FontAwesome"
-        name="comment"
-        style={{
-          fontSize: 20,
-          color: tintColor,
-        }}
-      />
-    ),
-  };
+
 
   render() {
     return (
-      <Container>
-        <View style={styles.container}>
-          <Header style={styles.containerheder}>
-            <Left>
-              <Icon
-                style={styles.menuicone}
-                name="menu"
-                onPress={() => this.props.navigation.openDrawer()}
-              />
-            </Left>
-            <Body>
-              <Text></Text>
-            </Body>
-            <Right></Right>
-          </Header>
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text>پیام</Text>
-          </View>
-        </View>
-      </Container>
+    <View>
+        <Text>FDGFDGDFFD</Text>
+    </View>
     );
   }
 }

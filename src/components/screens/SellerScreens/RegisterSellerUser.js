@@ -44,7 +44,7 @@ class StepAtributUser extends React.Component {
                         <TextInput style={styles.inputs}
                                    placeholder="نام "
                                    keyboardType='text'
-                                   underlineColorAndroid='transparent'
+                                   // underlineColorAndroid='transparent'
                                    onChangeText={(ProductName) => this.setState({ProductName})}/>
 
                     </View>
@@ -402,15 +402,15 @@ const styles = StyleSheet.create(
         },
         responsiveBox: {
             width: wp('95%'),
-            height: hp('8%'),
+            height: hp('6%'),
             marginBottom: hp('2%'),
             flexDirection: 'column',
             justifyContent: 'space-around',
             fontFamily: 'IRANSansMobile',
 
-            borderBottomColor: '#fa1d7a',
+            // borderBottomColor: '#fa1d7a',
             backgroundColor: '#FFFFFF',
-            borderBottomWidth: 1,
+            // borderBottomWidth: 1,
         },
         responsiveBoxTextarea: {
             width: wp('95%'),
@@ -488,7 +488,8 @@ const styles = StyleSheet.create(
         inputs: {
             height: 45,
             marginLeft: 16,
-            borderBottomColor: '#FFFFFF',
+            borderWidth:1,
+            borderColor: 'blue',
             flex: 1,
             fontSize: 15,
             textAlign: 'right',

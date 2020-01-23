@@ -275,7 +275,26 @@ export class HomeScreen extends Component {
                              </TabHeading>}>
                         <StepOne/>
                     </Tab>
+                    <Tab tab
+                         heading={
+                             <TabHeading style={{backgroundColor: '#ffffff'}}>
+                                 <View style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+                                     <View style={{flex:1,marginTop:10,marginBottom:-20}}>
+                                         {/*<FontAwesomeIcon icon={faEdit} style={{color:'#fff'}}/>*/}
+                                         <Icon
+                                             type="FontAwesome"
+                                             name="cutlery"
+                                             style={{fontSize: 20, color:'#fa1d7a'}}
+                                         />
+                                     </View>
+                                     <View style={{flex:1}}>
+                                         <Text style={{fontFamily: 'IRANSansMobile', color: '#fa1d7a'}}>سفارش های قبلی</Text>
 
+                                     </View>
+                                 </View>
+                             </TabHeading>}>
+                        <StepOne/>
+                    </Tab>
                 </Tabs>
             </Container>
         );

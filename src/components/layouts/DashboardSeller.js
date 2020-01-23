@@ -1,5 +1,5 @@
 import {Image, View, Button, StyleSheet, ScrollView, Text, ImageBackground} from "react-native";
-import {createDrawerNavigator,DrawerItems} from 'react-navigation-drawer';
+import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -12,24 +12,25 @@ import {
     faEdit, faFunnelDollar,
     faHome, faMoneyBill, faPhone, faRubleSign, faSkiing, faTasks
 } from "@fortawesome/free-solid-svg-icons";
-import { Avatar } from 'react-native-paper';
-import ElanScreen from '../screens/ElanScreen';
+import {Avatar} from 'react-native-paper';
+import NotificationScreen from '../screens/SellerScreens/NotificationScreen';
 import SefareshtScreen from '../screens/SefareshatScreen';
 import HomeScreen from "../screens/SellerScreens/HomeScreen";
 import React from "react";
 import {Body, Footer, Header, Icon, Left, Right} from "native-base";
 import {TouchableOpacity} from "react-native-gesture-handler";
+import Divider from "react-native-material-ui/src/Divider";
 
-const Navigator = (NameScreen,TitleScreen)=> createStackNavigator({
-    Home:NameScreen
-},
+const Navigator = (NameScreen, TitleScreen) => createStackNavigator({
+        Home: NameScreen
+    },
     {
         defaultNavigationOptions: ({navigation}) => {
             return {
                 title: TitleScreen,
                 headerStyle: {
                     backgroundColor: '#F06',
-                    color:'#ffffff',
+                    color: '#ffffff',
                     fontFamily: 'IRANSansMobile'
 
                 },
@@ -41,9 +42,10 @@ const Navigator = (NameScreen,TitleScreen)=> createStackNavigator({
                 },
                 headerRight: (
 
-                    <FontAwesomeIcon icon={faBars} size={20} style={{color:'#ffffff',marginRight:20}}  onPress={() => navigation.openDrawer()}/>
+                    <FontAwesomeIcon icon={faBars} size={20} style={{color: '#ffffff', marginRight: 20}}
+                                     onPress={() => navigation.openDrawer()}/>
 
-                    )
+                )
             }
 
         }
@@ -55,17 +57,17 @@ const CustomDrawerComponent = props => (
             {/*    source={require('../../../assets/images/HeaderSeller.jpg')}*/}
             {/*    style={{width: '100%', height: '100%'}}*/}
             {/*    resizeMode="stretch"></ImageBackground>*/}
-            <View style={{flex:1,flexDirection:'column'}}>
-            <View style={{flex:2,justifyContent:'center',alignItems:'center',marginTop:10}}>
-            <Avatar.Image size={75} source={require('../../../assets/images/HeaderSellerAwater.jpg')} />
-            </View>
-                <View style={{flexDirection:'row-reverse',flex:1}}>
-            <View style={{flex:1,justifyContent:'center',alignItems:'flex-end'}}>
-            <Text style={{color:'#fff', fontFamily: 'IRANSansMobile',}}>پروفایل من</Text>
-            </View>
-            <View style={{flex:1,justifyContent:'center',alignItems:'flex-start'}}>
-                    <Text style={{color:'#fff', fontFamily: 'IRANSansMobile',}}>خروج</Text>
+            <View style={{flex: 1, flexDirection: 'column'}}>
+                <View style={{flex: 2, justifyContent: 'center', alignItems: 'center', marginTop: 10}}>
+                    <Avatar.Image size={75} source={require('../../../assets/images/HeaderSellerAwater.jpg')}/>
                 </View>
+                <View style={{flexDirection: 'row-reverse', flex: 1}}>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+                        <Text style={{color: '#fff', fontFamily: 'IRANSansMobile',}}>پروفایل من</Text>
+                    </View>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-start'}}>
+                        <Text style={{color: '#fff', fontFamily: 'IRANSansMobile',}}>خروج</Text>
+                    </View>
                 </View>
             </View>
             {/*<Image*/}
@@ -81,21 +83,7 @@ const CustomDrawerComponent = props => (
         <Footer style={styles.containerfooter}>
             <View style={styles.containerview}>
                 <TouchableOpacity>
-                    <Icon type="FontAwesome" name="send-o" style={styles.containericon} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Icon
-                        type="FontAwesome"
-                        name="google-plus"
-                        style={styles.containericon}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Icon
-                        type="FontAwesome"
-                        name="whatsapp"
-                        style={styles.containericon}
-                    />
+                    <Icon type="FontAwesome" name="send-o" style={styles.containericon}/>
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <Icon
@@ -104,7 +92,22 @@ const CustomDrawerComponent = props => (
                         style={styles.containericon}
                     />
                 </TouchableOpacity>
+                <TouchableOpacity>
+                    <Icon
+                        type="FontAwesome"
+                        name="globe"
+                        style={styles.containericon}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Icon
+                        type="FontAwesome"
+                        name="twitter"
+                        style={styles.containericon}
+                    />
+                </TouchableOpacity>
             </View>
+
         </Footer>
     </View>
 );
@@ -125,7 +128,7 @@ const styles = StyleSheet.create({
     },
     containericon: {
         color: '#ffff',
-        fontSize: 22,
+        fontSize: 30,
     },
     containerview1: {
         justifyContent: 'center',
@@ -143,6 +146,7 @@ const styles = StyleSheet.create({
     containerfooter: {
         backgroundColor: '#F06',
         borderTopWidth: 1,
+        // height:100,
         borderTopColor: '#F06',
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -159,18 +163,17 @@ const styles = StyleSheet.create({
 });
 
 const MyDrawerNavigator = createDrawerNavigator({
-        'صفحه اصلی'
-            : {
-            screen: Navigator(HomeScreen,'صفحه اصلی'),
+        'صفحه اصلی': {
+            screen: Navigator(HomeScreen, 'صفحه اصلی'),
 
             navigationOptions: {
-                drawerLabel:(
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flex:9,justifyContent:'center',alignItems:'center'}}>
-                        <Text style={{  fontFamily: 'IRANSansMobile',color:'#777777'}}>صفحه اصلی </Text>
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>صفحه اصلی </Text>
                         </View>
-                        <View style={{flex:2}}>
-                            <FontAwesomeIcon icon={faHome} size={20} style={{color:'#777777'}}/>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faHome} size={20} style={{color: '#777777'}}/>
                         </View>
                     </View>
                 ),
@@ -182,15 +185,15 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'پیام ها/اعلان ها': {
-            screen: Navigator(ElanScreen,'پیام ها/اعلان ها '),
+            screen: Navigator(NotificationScreen, 'پیام ها/اعلان ها '),
             navigationOptions: {
-                drawerLabel:(
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flex:9,justifyContent:'center',alignItems:'center'}}>
-                            <Text style={{  fontFamily: 'IRANSansMobile',color:'#777777'}}>پیام ها/اعلان ها </Text>
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>پیام ها/اعلان ها </Text>
                         </View>
-                        <View style={{flex:2}}>
-                            <FontAwesomeIcon icon={faBell} style={{color:'#777777'}} size={20}/>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faBell} style={{color: '#777777'}} size={20}/>
                         </View>
                     </View>
                 ),
@@ -199,15 +202,15 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'سفارشات مشتري': {
-            screen:Navigator(SefareshtScreen,'سفارشات مشتري '),
+            screen: Navigator(SefareshtScreen, 'سفارشات مشتري '),
             navigationOptions: {
-                drawerLabel:(
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flex:9,justifyContent:'center',alignItems:'center'}}>
-                            <Text style={{  fontFamily: 'IRANSansMobile',color:'#777777'}}>سفارشات مشتري </Text>
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>سفارشات مشتري </Text>
                         </View>
-                        <View style={{flex:2}}>
-                            <FontAwesomeIcon icon={faEdit} size={20} style={{color:'#777777'}}/>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faEdit} size={20} style={{color: '#777777'}}/>
                         </View>
                     </View>
                 ),
@@ -216,19 +219,19 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'سفارشات در حال آماده سازي': {
-            screen: Navigator(HomeScreen,'سفارشات در حال آماده سازي'),
+            screen: Navigator(HomeScreen, 'سفارشات در حال آماده سازي'),
             navigationOptions: {
-                drawerLabel:(
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flex:9,justifyContent:'center',alignItems:'center'}}>
-                            <Text style={{  fontFamily: 'IRANSansMobile',color:'#777777'}}>سفارشات در حال آماده سازي </Text>
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>سفارشات در حال آماده سازي </Text>
                         </View>
-                        <View style={{flex:2}}>
+                        <View style={{flex: 2}}>
                             <Icon
                                 type="FontAwesome"
                                 name="cutlery"
 
-                                style={{fontSize: 20, color:'#777777'}}
+                                style={{fontSize: 20, color: '#777777'}}
                             />
                         </View>
                     </View>
@@ -238,15 +241,15 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'درآمدها': {
-            screen: Navigator(HomeScreen,'درآمدها'),
+            screen: Navigator(HomeScreen, 'درآمدها'),
             navigationOptions: {
-                drawerLabel:(
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flex:9,justifyContent:'center',alignItems:'center'}}>
-                            <Text style={{  fontFamily: 'IRANSansMobile',color:'#777777'}}>درآمدها </Text>
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>درآمدها </Text>
                         </View>
-                        <View style={{flex:2}}>
-                            <FontAwesomeIcon icon={faCreditCard} size={20} style={{color:'#777777'}}/>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faCreditCard} size={20} style={{color: '#777777'}}/>
                         </View>
                     </View>
                 ),
@@ -255,15 +258,15 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'ثبت توانايي ها': {
-            screen: Navigator(HomeScreen,'ثبت توانايي ها'),
+            screen: Navigator(HomeScreen, 'ثبت توانايي ها'),
             navigationOptions: {
-                drawerLabel:(
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flex:9,justifyContent:'center',alignItems:'center'}}>
-                            <Text style={{  fontFamily: 'IRANSansMobile',color:'#777777'}}>ثبت توانايي ها </Text>
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>ثبت توانايي ها </Text>
                         </View>
-                        <View style={{flex:2}}>
-                            <FontAwesomeIcon icon={faTasks} size={20} style={{color:'#777777'}}/>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faTasks} size={20} style={{color: '#777777'}}/>
                         </View>
                     </View>
                 ),
@@ -271,16 +274,16 @@ const MyDrawerNavigator = createDrawerNavigator({
 
             }
         },
-        'قوانين موجود':{
-            screen: Navigator(HomeScreen,'قوانين موجود'),
+        'قوانين موجود': {
+            screen: Navigator(HomeScreen, 'قوانين موجود'),
             navigationOptions: {
-                drawerLabel:(
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flex:9,justifyContent:'center',alignItems:'center'}}>
-                            <Text style={{  fontFamily: 'IRANSansMobile',color:'#777777'}}>قوانين موجود </Text>
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>قوانين موجود </Text>
                         </View>
-                        <View style={{flex:2}}>
-                            <FontAwesomeIcon icon={faBalanceScale} size={20} style={{color:'#777777'}}/>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faBalanceScale} size={20} style={{color: '#777777'}}/>
                         </View>
                     </View>
                 ),
@@ -289,15 +292,15 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'تماس با ما': {
-            screen: Navigator(HomeScreen,'تماس با ما'),
+            screen: Navigator(HomeScreen, 'تماس با ما'),
             navigationOptions: {
-                drawerLabel:(
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flex:9,justifyContent:'center',alignItems:'center'}}>
-                            <Text style={{  fontFamily: 'IRANSansMobile',color:'#777777'}}>تماس با ما </Text>
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>تماس با ما </Text>
                         </View>
-                        <View style={{flex:2}}>
-                            <FontAwesomeIcon icon={faPhone} size={20} style={{color:'#777777'}}/>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faPhone} size={20} style={{color: '#777777'}}/>
                         </View>
                     </View>
                 ),
@@ -321,12 +324,12 @@ const MyDrawerNavigator = createDrawerNavigator({
                 border: 10,
             },
             labelStyle: {
-                fontSize:15,
+                fontSize: 15,
                 fontFamily: 'IRANSansMobile',
             },
             itemStyle: {
                 height: 60,
-                justifyContent:'center',
+                justifyContent: 'center',
 
             },
 
