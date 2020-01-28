@@ -6,8 +6,7 @@ import {
   Image,
   FlatList
 } from 'react-native';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faBell} from "@fortawesome/free-solid-svg-icons";
+import { Avatar, Card, IconButton } from 'react-native-paper';
 class NotificationScreen extends Component {
 
   constructor(props) {
@@ -17,39 +16,95 @@ class NotificationScreen extends Component {
       data: [
         // dataSource: ds.cloneWithRows([
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:'رسول صیدی',
+          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+          image:'./assets/images/1.jpg',
+          date:'2بهمن'
         }
         ,
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:'فرهادی ',
+          description: "واریز با موفقیت انجام شد",
+          image:'./assets/images/1.jpg',
+          date:'18 دی'
+
         }
         ,
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:'زهرا راد ',
+          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+          image:'./assets/images/1.jpg',
+          date:'18 آذر'
+
         }
         ,
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:' الهام گودرزی',
+          description: "فروشنده محترم،سفارش تحویل گردید",
+          image:'./assets/images/1.jpg',
+          date:'21 دی'
+
         }
         ,
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:'سمیرا احمدی ',
+          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+          image:'./assets/images/1.jpg',
+          date:'21 دی'
+
         }
         ,
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:'محمد یاری ',
+          description: "واریز با موفقیت انجام شد",
+          image:'./assets/images/1.jpg',
+          date:'21 بهمن'
+
         }
         ,
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:'علی عباسی ',
+          description: "فروشنده محترم،سفارش تحویل گردید",
+          image:'./assets/images/1.jpg',
+          date:'21 شهریور'
+
         }
         ,
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:'خسرو امیری ',
+          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+          image:'./assets/images/1.jpg',
+          date:'9 دی'
+
         }
         ,
         {
-          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید"
+          FirstName:'باران صیدی ',
+          description: "واریز با موفقیت انجام شد",
+          image:'./assets/images/1.jpg',
+          date:'12 دی'
+
+        },
+        {
+          FirstName:'ثنا علوانی ',
+          description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+          image:'./assets/images/1.jpg',
+          date:'12 دی'
+
+        },
+        {
+          FirstName:'ثریا احمدی ',
+          description: "فروشنده محترم،سفارش تحویل گردید",
+          image:'./assets/images/1.jpg',
+          date:'12 دی'
+
+        },
+        {
+          FirstName:'سمیرا احمدی ',
+          description: "واریز با موفقیت انجام شد",
+          image:'./assets/images/1.jpg',
+          date:'12 دی'
+
         }
       ]
       // ]),
@@ -66,10 +121,18 @@ class NotificationScreen extends Component {
                     }}
                     renderItem={({item}) => {
                       return (
-                          <View style={styles.notificationBox}>
+                          <View>
+                            <Card style={{borderBottomWidth:1,borderBottomColor:'#0099CC'}}>
+                              <Card.Title
+                                  title={item.FirstName}
+                                  titleStyle={{marginRight:20, textAlign:'right',  fontFamily: 'IRANSansMobile(FaNum)',fontSize: 15}}
+                                  subtitle={item.description}
+                                  subtitleStyle={{marginRight:20, textAlign:'right',  fontFamily: 'IRANSansMobile(FaNum)',fontSize: 15}}
 
-                            <Text style={styles.description}>{item.description}</Text>
-                            <FontAwesomeIcon icon={faBell} style={{color:'#777777',paddingRight:40}} size={30}/>
+                                  right={(props) => <Avatar.Image size={60} source={require('../../../../assets/images/user.jpg')} />}
+                                  left={(props) => <Text style={{fontFamily: 'IRANSansMobile(FaNum)',fontSize: 12}}>{item.date}</Text>}
+                              />
+                            </Card>
                           </View>
                       )}}/>
         </View>
@@ -99,7 +162,7 @@ const styles = StyleSheet.create({
     height:45,
   },
   description:{
-    fontFamily: 'IRANSansMobile',
+    fontFamily: 'IRANSansMobile(FaNum)',
 
     fontSize:15,
     color: "#777777",

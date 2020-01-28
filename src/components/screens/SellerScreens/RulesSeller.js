@@ -12,18 +12,18 @@ import {
     Body,
     Left,
 } from 'native-base';
-export default class Rules extends Component {
+export default class RulesSeller extends Component {
     render() {
         return (
             <Container>
                 <Content>
-                    <View>
-                        <Text style={{ fontSize: 17, marginTop: '8%', marginLeft: '2%', fontFamily: 'Octicons' }}> *راهنما و قوانین اپلیکیشن:</Text>
-                    </View>
+                    {/*<View>*/}
+                    {/*    <Text style={{ fontSize: 17, marginTop: '8%', marginLeft: '2%', fontFamily: 'IRANSansMobile(FaNum)' }}> *راهنما و قوانین اپلیکیشن:</Text>*/}
+                    {/*</View>*/}
                     <View>
                         <Card>
-                            <CardItem>
-                               <Text style={{fontFamily: 'Octicons', fontSize: 18,color: 'gray',flex:1,justifyContent:'space-between'}}>
+                            <CardItem  style={{fontFamily: 'IRANSansMobile(FaNum)'}}>
+                               <Text style={{fontFamily: 'IRANSansMobile(FaNum)', fontSize: 15,color: 'gray',flex:1,justifyContent:'center',alignItems:'center'}}>
                                     { ' '}
                                     __ استفاده از خدمات این اپلیکیشن بدان معنی است که شرایط استفاده از آن را پذیرفته اید و باتوجه به اینکه تمامی خدمات ارائه شده در مجموعه "دست پز"تابع قوانین مطروح در این بخش است.مطالعه آن پیش از ثبت نام و استفاده از خدمات الزامی است.{'\n'}{'\n'}
                                     1- در کلیه مراحل استفاده از اپلیکیشن "دست پز"خریدار و فروشنده موظف به رعایت قوانین جمهوری اسلامی ایران هستندخدمات ارائه شده در مجموعه "دست پز"تابع قوانین مطروح در این بخش است.{'\n'}{'\n'}
@@ -55,8 +55,6 @@ export default class Rules extends Component {
                                     مجاز به پیگیری های قانونی است.{'\n'}{'\n'}
                                     19-پس از ثبت سفارش ازسوی خریدارو واریز وجه چنانچه به دلیل تصمیم فروشنده,ادمین درتاریخ وساعت مورد نظروآدرس معنی تحویل داده نشود"دست پز"
                                     موظف است مبلغ پرداختی خریدار را به حساب وی مرجوع کند.
-
-
                                 </Text>
                             </CardItem>
                         </Card>

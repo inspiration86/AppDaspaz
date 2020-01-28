@@ -6,7 +6,7 @@ import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom
 import SellerLogin from '../screens/SellerLogin';
 import Home from '../screens/Home';
 import SelectUser from '../screens/SelectUser';
-import Rules from '../screens/Rules';
+import RulesSeller from '../screens/RulesSeller';
 
 export default class BottomTabNavigator extends Component {
     render() {
@@ -53,9 +53,9 @@ const AppMaterialBottomTabNavigator = createMaterialBottomTabNavigator(
         },
 
         Details: {
-            screen: Rules,
+            screen: RulesSeller,
             navigationOptions: {
-                tabBarLabel: 'Rules',
+                tabBarLabel: 'RulesSeller',
                 tabBarIcon: ({tintColor}) => (
                     <View>
                         <Icon style={[{color: tintColor}]} size={25} name={'ios-images'} />

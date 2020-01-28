@@ -16,6 +16,7 @@ import {Avatar} from 'react-native-paper';
 import NotificationScreen from '../screens/SellerScreens/NotificationScreen';
 import SefareshtScreen from '../screens/SefareshatScreen';
 import HomeScreen from "../screens/SellerScreens/HomeScreen";
+import RulesSeller from "../screens/SellerScreens/RulesSeller";
 import React from "react";
 import {Body, Footer, Header, Icon, Left, Right} from "native-base";
 import {TouchableOpacity} from "react-native-gesture-handler";
@@ -29,7 +30,7 @@ const Navigator = (NameScreen, TitleScreen) => createStackNavigator({
             return {
                 title: TitleScreen,
                 headerStyle: {
-                    backgroundColor: '#F06',
+                    backgroundColor: '#de481e',
                     color: '#ffffff',
                     fontFamily: 'IRANSansMobile'
 
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
         height: 150,
         // flex:1,
         // flexDirection:'row',
-        backgroundColor: '#F06',
+        backgroundColor: '#de481e',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -144,10 +145,10 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     containerfooter: {
-        backgroundColor: '#F06',
+        backgroundColor: '#de481e',
         borderTopWidth: 1,
         // height:100,
-        borderTopColor: '#F06',
+        borderTopColor: '#de481e',
         flexDirection: 'row',
         justifyContent: 'space-around',
     },
@@ -275,12 +276,12 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'قوانين موجود': {
-            screen: Navigator(HomeScreen, 'قوانين موجود'),
+            screen: Navigator(RulesSeller, 'راهنما و قوانین اپلیکیشن'),
             navigationOptions: {
                 drawerLabel: (
                     <View style={{flex: 1, flexDirection: 'row'}}>
                         <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
-                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>قوانين موجود </Text>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>راهنما و قوانین اپلیکیشن</Text>
                         </View>
                         <View style={{flex: 2}}>
                             <FontAwesomeIcon icon={faBalanceScale} size={20} style={{color: '#777777'}}/>

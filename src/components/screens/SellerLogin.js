@@ -56,7 +56,7 @@ class SellerLogin extends Component {
                     </View>
                 </View>
 
-                <View style={{height: 50, flexDirection: 'row-reverse', backgroundColor: '#00bfa5'}}>
+                <View style={{height: 50, flexDirection: 'row-reverse', backgroundColor: '#de481e'}}>
 
                     <View style={{flex: 1, alignItems: 'center', backgroundColor: '#fa1d7a'}}>
                         <Text style={{color: '#fff', marginTop: '5%', fontFamily: 'IRANSansMobile'}}
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     },
     loginButton: {
 
-        backgroundColor: "#fa1d7a",
+        backgroundColor: "#de481e",
 
     },
     inputIcon: {
