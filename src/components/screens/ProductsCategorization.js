@@ -77,11 +77,9 @@ class ProductsCategorization extends Component {
             ]
         };
     }
-
     clickEventListener = (item) => {
         Alert.alert('Message', 'Item clicked. '+item.name);
     }
-
     render() {
         const { isSwitchOn } = this.state;
         return (

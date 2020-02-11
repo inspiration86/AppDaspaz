@@ -1,48 +1,60 @@
 import React, { Component } from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
-import {StyleSheet} from "react-native";
+import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text } from 'native-base';
+import {StyleSheet, View} from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import {DrawerActions} from "react-navigation-drawer";
+import RulesSeller from "../screens/SellerScreens/RulesSeller";
 
-const MusicRoute = () => <Text>Music</Text>;
 
-const AlbumsRoute = () => <Text>Albums</Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
-
-export default class footer extends React.Component {
-    constructor(props) {
+export default class FooterTabsIconTextExample extends Component {
+    constructor(props){
         super(props);
-        this.state = {
-            index: 0,
-            routes: [
-                {key: 'music', title: 'Music', icon: 'camera'},
-                {key: 'albums', title: 'Albums', icon: 'album'},
-                {key: 'recents', title: 'Recents', icon: 'history'},
-            ],
-        };
 
     }
-    _handleIndexChange = index => this.setState({ index });
-
-    _renderScene = BottomNavigation.SceneMap({
-        music: MusicRoute,
-        albums: AlbumsRoute,
-        recents: RecentsRoute,
-    });
 
     render() {
+        // const navigation = useNavigation();
         return (
-            <BottomNavigation
-                navigationState={this.state}
-                onIndexChange={this._handleIndexChange}
-                renderScene={this._renderScene}
-            />
+            <View>
+                <Footer>
+                    <FooterTab >
+                        <Button vertical >
+                            <Icon name="apps" />
+                            <Text style={{fontFamily:'IRANSansMobile(FaNum)'}}>محصولات ما</Text>
+                        </Button>
+                        <Button vertical
+                                // onPress={() => navigation.push('DashboardSeller')}
+
+                        >
+                            <Icon name="camera" />
+                            <Text>سفارش جدید</Text>
+                        </Button>
+                        <Button vertical active>
+                            <Icon active name="plus" />
+                            <Text>محصول جدید</Text>
+                        </Button>
+                        <Button vertical>
+                            <Icon name="person" />
+                            <Text>سفارش قبلی</Text>
+                        </Button>
+                        <Button vertical>
+                            <Icon name="person" />
+                            <Text>فیلتر</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>
+            </View>
         );
     }
 }
+
+
+
 const styles = StyleSheet.create({
-    textstyle: {
-        fontFamily: 'IRANSansWeb(FaNum)',
-        fontSize: 20,
-        color: 'white',
-    },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
+

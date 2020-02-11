@@ -8,99 +8,176 @@ import {
     Platform,
     StatusBar,
     ScrollView,
-    Image,TouchableOpacity,
-    Dimensions
+    Image, TouchableOpacity,
+    Dimensions, FlatList
 } from "react-native";
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {Divider} from 'react-native-elements';
 import {faClock, faHeart, faHeartbeat, faPlusCircle, faTimesCircle} from "@fortawesome/free-solid-svg-icons";
-import {Container} from "native-base";
+import {Avatar, Card} from "react-native-paper";
+import Footer from '../../../components/layouts/Footer';
 
-const {height, width} = Dimensions.get('window')
+const {height, width} = Dimensions.get('window');
 
 class Explore extends Component {
+    constructor(props) {
+        super(props);
 
-    componentWillMount() {
-        this.startHeaderHeight = 80
-        if (Platform.OS == 'android') {
-            this.startHeaderHeight = 100 + StatusBar.currentHeight
-        }
+        this.state = {
+
+            data: [
+                // dataSource: ds.cloneWithRows([
+                {
+                    FirstName: 'رسول صیدی',
+                    description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+                    image: './assets/images/1.jpg',
+                    date: '2بهمن'
+                }
+                ,
+                {
+                    FirstName: 'فرهادی ',
+                    description: "واریز با موفقیت انجام شد",
+                    image: './assets/images/1.jpg',
+                    date: '18 دی'
+
+                }
+                ,
+                {
+                    FirstName: 'زهرا راد ',
+                    description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+                    image: './assets/images/1.jpg',
+                    date: '18 آذر'
+
+                }
+                ,
+                {
+                    FirstName: ' الهام گودرزی',
+                    description: "فروشنده محترم،سفارش تحویل گردید",
+                    image: './assets/images/1.jpg',
+                    date: '21 دی'
+
+                }
+                ,
+                {
+                    FirstName: 'سمیرا احمدی ',
+                    description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+                    image: './assets/images/1.jpg',
+                    date: '21 دی'
+
+                }
+                ,
+                {
+                    FirstName: 'محمد یاری ',
+                    description: "واریز با موفقیت انجام شد",
+                    image: './assets/images/1.jpg',
+                    date: '21 بهمن'
+
+                }
+                ,
+                {
+                    FirstName: 'علی عباسی ',
+                    description: "فروشنده محترم،سفارش تحویل گردید",
+                    image: './assets/images/1.jpg',
+                    date: '21 شهریور'
+
+                }
+                ,
+                {
+                    FirstName: 'خسرو امیری ',
+                    description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+                    image: './assets/images/1.jpg',
+                    date: '9 دی'
+
+                }
+                ,
+                {
+                    FirstName: 'باران صیدی ',
+                    description: "واریز با موفقیت انجام شد",
+                    image: './assets/images/1.jpg',
+                    date: '12 دی'
+
+                },
+                {
+                    FirstName: 'ثنا علوانی ',
+                    description: "فروشنده محترم،سفارش شماره 2345 با موفقیت تحویل فروشنده گردید",
+                    image: './assets/images/1.jpg',
+                    date: '12 دی'
+
+                },
+                {
+                    FirstName: 'ثریا احمدی ',
+                    description: "فروشنده محترم،سفارش تحویل گردید",
+                    image: './assets/images/1.jpg',
+                    date: '12 دی'
+
+                },
+                {
+                    FirstName: 'سمیرا احمدی ',
+                    description: "واریز با موفقیت انجام شد",
+                    image: './assets/images/1.jpg',
+                    date: '12 دی'
+
+                }
+            ],
+
+        };
     }
 
     render() {
         return (
-            <SafeAreaView style={{flex: 1}}>
-                <View style={{flex: 1}}>
+            <SafeAreaView style={{flex: 1,backgroundColor:'#fff'}}>
+                <View >
 
-                    <ScrollView
-                        scrollEventThrottle={16}
+                    <ScrollView style={{backgroundColor:'#fff'}}
+
                     >
-                        <View style={{flex: 1, backgroundColor: 'white'}}>
-                            <Text style={{
-                                fontSize: 15,
-                                paddingVertical:10,
-                                marginRight:2,
-                                marginLeft:2,
-                                fontFamily: 'IRANSansMobile',
-                                backgroundColor: '#ff',
-                                color: '#777',
-                                textAlign: 'center',
-                                // borderRadius:20
-                            }}>
-                                سفارش های جدید
-                            </Text>
 
-                            <View style={{height: 160, marginTop: 20}}>
+                        <View style={{flex: 1, backgroundColor: 'white',marginTop:30}}>
+                            <View style={{flex: 1, flexDirection: 'row-reverse'}}>
+                                <View style={{flex: 2}}>
+                                    <Text style={{
+                                        fontSize: 15,
+                                        paddingVertical: 5,
+                                        paddingHorizontal: 10,
+                                        fontFamily: 'IRANSansMobile',
+                                        backgroundColor: '#00C851',
+                                        color: '#fff',
+                                        textAlign: 'right',
+                                        borderRadius:20
+                                    }}>
+                                        سفارش های در حال  آماده سازی
+                                    </Text>
+
+                                </View>
+                                <View >
+                                    <Text style={{
+                                        fontSize: 15,
+                                        paddingVertical: 5,
+                                        paddingHorizontal: 25,
+                                        // marginLeft:10,
+                                        fontFamily: 'IRANSansMobile',
+                                        backgroundColor: '#00C851',
+                                        color: '#fff',
+                                        textAlign: 'right',
+                                        borderRadius:20
+                                    }} onPress={this.props.navigation.push('OrderNewCustomer')}>همه
+                                    </Text>
+                                </View>
+                            </View>
+                            <View style={{height: 240, marginTop: 30, paddingHorizontal: 8}}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
+
                                     <View style={{
-                                        height: 160,
-                                        width: 130,
+                                        height: 210,
+                                        width: 190,
                                         marginLeft: 10,
                                         borderWidth: 1,
                                         borderColor: '#dddddd',
-                                        borderRadius: 10
-                                    }}>
-                                        <View style={{flex: 3,}}>
-                                            <Image source={require('../../../../assets/images/5.jpg')}
-                                                   style={{
-                                                       flex: 1,
-                                                       borderRadius: 10,
-                                                       marginLeft: 4,
-                                                       marginRight: 4,
-                                                       marginTop: 4,
-                                                       width: null,
-                                                       height: null,
-                                                       resizeMode: 'cover'
-                                                   }}
-                                            />
-                                        </View>
-                                        <View style={{
-                                            flex: 1,
-                                            paddingLeft: 10,
-                                            paddingTop: 2,
-                                            marginBottom:5
-
-                                        }}>
-                                            <Text
-                                                style={{textAlign: 'center',fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12, color: '#777777'}}>
-                                                شیرینی</Text>
-                                            <Text
-                                                style={{color:'#de481e', textAlign: 'left', fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12,}}>
-                                                3 آذر</Text>
-                                        </View>
-
-                                    </View>
-                                    <View style={{
-                                        height: 160,
-                                        width: 130,
-                                        marginLeft: 10,
-                                        borderWidth: 1,
-                                        borderColor: '#dddddd',
-                                        borderRadius: 10
+                                        borderRadius: 2
                                     }}>
                                         <View style={{flex: 3,}}>
 
@@ -121,25 +198,35 @@ class Explore extends Component {
                                             flex: 1,
                                             paddingLeft: 10,
                                             paddingTop: 2,
-                                            marginBottom:5
+                                            marginBottom: 5
 
                                         }}>
                                             <Text
-                                                style={{textAlign: 'center',fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12, color: '#777777'}}>
+                                                style={{
+                                                    textAlign: 'center',
+                                                    fontFamily: 'IRANSansMobile(FaNum)',
+                                                    fontSize: 12,
+                                                    color: '#777777'
+                                                }}>
                                                 شکلات</Text>
                                             <Text
-                                                style={{color:'#de481e', textAlign: 'left', fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12,}}>
+                                                style={{
+                                                    color: '#de481e',
+                                                    textAlign: 'left',
+                                                    fontFamily: 'IRANSansMobile(FaNum)',
+                                                    fontSize: 12,
+                                                }}>
                                                 20 بهمن</Text>
                                         </View>
 
                                     </View>
                                     <View style={{
-                                        height: 160,
-                                        width: 130,
+                                        height: 210,
+                                        width: 190,
                                         marginLeft: 10,
                                         borderWidth: 1,
                                         borderColor: '#dddddd',
-                                        borderRadius: 10
+                                        borderRadius: 2
                                     }}>
                                         <View style={{flex: 3,}}>
                                             <Image source={require('../../../../assets/images/7.jpg')}
@@ -160,21 +247,31 @@ class Explore extends Component {
                                             flex: 1,
                                             paddingLeft: 10,
                                             paddingTop: 2,
-                                            marginBottom:5
+                                            marginBottom: 5
 
                                         }}>
                                             <Text
-                                                style={{textAlign: 'center',fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12, color: '#777777'}}>
+                                                style={{
+                                                    textAlign: 'center',
+                                                    fontFamily: 'IRANSansMobile(FaNum)',
+                                                    fontSize: 12,
+                                                    color: '#777777'
+                                                }}>
                                                 دسر</Text>
                                             <Text
-                                                style={{color:'#de481e', textAlign: 'left', fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12,}}>
+                                                style={{
+                                                    color: '#de481e',
+                                                    textAlign: 'left',
+                                                    fontFamily: 'IRANSansMobile(FaNum)',
+                                                    fontSize: 12,
+                                                }}>
                                                 11 اسفند</Text>
                                         </View>
 
                                     </View>
                                     <View style={{
-                                        height: 160,
-                                        width: 130,
+                                        height: 210,
+                                        width: 190,
                                         marginLeft: 10,
                                         borderWidth: 1,
                                         borderColor: '#dddddd',
@@ -205,7 +302,7 @@ class Explore extends Component {
                                         }}>
                                             <Text
                                                 style={{fontFamily: 'IRANSansMobile', fontSize: 12, color: '#777777'}}>
-                                                محصولات  محلی</Text>
+                                                محصولات محلی</Text>
                                         </View>
 
                                     </View>
@@ -213,36 +310,60 @@ class Explore extends Component {
                             </View>
 
                         </View>
-                        <View style={{flex: 1, backgroundColor: 'white', paddingTop: 20}}>
-                            <Text style={{
-                                fontSize: 15,
-                                paddingVertical:10,
-                                marginRight:8,
-                                marginLeft:8,
-                                fontFamily: 'IRANSansMobile',
-                                backgroundColor: '#FFF',
-                                color: '#777',
-                                textAlign: 'center',
-                                // borderRadius:20
-                            }}>
-                                لیست محصولات
-                            </Text>
+                        <View style={{flex: 1, backgroundColor: 'white', paddingTop: 20,}}>
+                            <View style={{flex: 1, flexDirection: 'row-reverse'}}>
+                                <View style={{flex: 2}}>
+                                    <Text style={{
+                                        fontSize: 15,
+                                        paddingVertical: 5,
+                                        paddingHorizontal: 10,
+                                        fontFamily: 'IRANSansMobile',
+                                        backgroundColor: '#00C851',
+                                        color: '#fff',
+                                        textAlign: 'right',
+                                        borderRadius:20
+                                    }}>
+                                      لیست محصولات
+                                    </Text>
+                                </View>
+                                <View>
+                                    <Text style={{
+                                        fontSize: 15,
+                                        paddingVertical: 5,
+                                        paddingHorizontal: 25,
+                                        // marginLeft:10,
+                                        fontFamily: 'IRANSansMobile',
+                                        backgroundColor: '#00C851',
+                                        color: '#fff',
+                                        textAlign: 'right',
+                                        borderRadius:20
+                                    }}>همه
+                                    </Text>
+                                </View>
+                            </View>
 
-                            <View style={{height: 160, marginTop: 20}}>
+
+                            <View style={{height: 240, marginTop: 30}}>
                                 <ScrollView
                                     horizontal={true}
                                     showsHorizontalScrollIndicator={false}
                                 >
                                     <View style={{
-                                        height: 160,
-                                        width: 130,
+                                        height: 200,
+                                        width: 170,
                                         marginLeft: 10,
                                         borderWidth: 1,
                                         borderColor: '#dddddd',
                                         borderRadius: 10
                                     }}>
                                         <View style={{flex: 3,}}>
-                                            <FontAwesomeIcon icon={faHeart} size={32} style={{color:'rgba(239,255,223,0.81)',zIndex:99,marginTop:10,marginLeft:10,position:'absolute'}}/>
+                                            <FontAwesomeIcon icon={faHeart} size={32} style={{
+                                                color: 'rgba(239,255,223,0.81)',
+                                                zIndex: 99,
+                                                marginTop: 10,
+                                                marginLeft: 10,
+                                                position: 'absolute'
+                                            }}/>
 
                                             <Image source={require('../../../../assets/images/1.jpg')}
                                                    style={{
@@ -263,9 +384,9 @@ class Explore extends Component {
                                             paddingTop: 2,
                                             justifyContent: 'center',
                                             alignItems: 'center',
-                                            backgroundColor:'#de481e',
-                                            borderBottomLeftRadius:10,
-                                            borderBottomRightRadius:10,
+                                            backgroundColor: '#ffbb33',
+                                            borderBottomLeftRadius: 10,
+                                            borderBottomRightRadius: 10,
 
 
                                         }}>
@@ -276,15 +397,21 @@ class Explore extends Component {
 
                                     </View>
                                     <View style={{
-                                        height: 160,
-                                        width: 130,
+                                        height: 200,
+                                        width: 170,
                                         marginLeft: 10,
                                         borderWidth: 1,
                                         borderColor: '#dddddd',
                                         borderRadius: 10
                                     }}>
                                         <View style={{flex: 3,}}>
-                                            <FontAwesomeIcon icon={faHeart} size={32} style={{color:'rgba(239,255,223,0.81)',zIndex:99,marginTop:10,marginLeft:10,position:'absolute'}}/>
+                                            <FontAwesomeIcon icon={faHeart} size={32} style={{
+                                                color: 'rgba(239,255,223,0.81)',
+                                                zIndex: 99,
+                                                marginTop: 10,
+                                                marginLeft: 10,
+                                                position: 'absolute'
+                                            }}/>
 
                                             <Image source={require('../../../../assets/images/2.jpg')}
                                                    style={{
@@ -305,9 +432,9 @@ class Explore extends Component {
                                             paddingTop: 2,
                                             justifyContent: 'center',
                                             alignItems: 'center',
-                                            backgroundColor:'#de481e',
-                                            borderBottomLeftRadius:10,
-                                            borderBottomRightRadius:10,
+                                            backgroundColor: '#ffbb33',
+                                            borderBottomLeftRadius: 10,
+                                            borderBottomRightRadius: 10,
 
                                         }}>
                                             <Text
@@ -317,15 +444,21 @@ class Explore extends Component {
 
                                     </View>
                                     <View style={{
-                                        height: 160,
-                                        width: 130,
+                                        height: 200,
+                                        width: 170,
                                         marginLeft: 10,
                                         borderWidth: 1,
                                         borderColor: '#dddddd',
                                         borderRadius: 10
                                     }}>
                                         <View style={{flex: 3,}}>
-                                            <FontAwesomeIcon icon={faHeart} size={32} style={{color:'rgba(239,255,223,0.81)',zIndex:99,marginTop:10,marginLeft:10,position:'absolute'}}/>
+                                            <FontAwesomeIcon icon={faHeart} size={32} style={{
+                                                color: 'rgba(239,255,223,0.81)',
+                                                zIndex: 99,
+                                                marginTop: 10,
+                                                marginLeft: 10,
+                                                position: 'absolute'
+                                            }}/>
 
                                             <Image source={require('../../../../assets/images/3.jpg')}
                                                    style={{
@@ -346,9 +479,9 @@ class Explore extends Component {
                                             paddingTop: 2,
                                             justifyContent: 'center',
                                             alignItems: 'center',
-                                            backgroundColor:'#de481e',
-                                            borderBottomLeftRadius:10,
-                                            borderBottomRightRadius:10,
+                                            backgroundColor: '#ffbb33',
+                                            borderBottomLeftRadius: 10,
+                                            borderBottomRightRadius: 10,
 
                                         }}>
                                             <Text
@@ -358,8 +491,8 @@ class Explore extends Component {
 
                                     </View>
                                     <View style={{
-                                        height: 160,
-                                        width: 130,
+                                        height: 200,
+                                        width: 170,
                                         marginLeft: 10,
                                         borderWidth: 1,
                                         borderColor: '#dddddd',
@@ -385,14 +518,14 @@ class Explore extends Component {
                                             paddingTop: 2,
                                             justifyContent: 'center',
                                             alignItems: 'center',
-                                            backgroundColor:'#de481e',
-                                            borderBottomLeftRadius:10,
-                                            borderBottomRightRadius:10,
+                                            backgroundColor: '#ffbb33',
+                                            borderBottomLeftRadius: 10,
+                                            borderBottomRightRadius: 10,
 
                                         }}>
                                             <Text
                                                 style={{fontFamily: 'IRANSansMobile', fontSize: 12, color: '#fff'}}>
-                                                محصولات  محلی</Text>
+                                                محصولات محلی</Text>
                                         </View>
 
                                     </View>
@@ -400,201 +533,14 @@ class Explore extends Component {
                             </View>
 
                         </View>
-                        <View style={{flex: 1, backgroundColor: 'white', paddingTop: 20}}>
-                            <Text style={{
-                                fontSize: 15,
-                                paddingVertical:10,
-                                marginRight:8,
-                                marginLeft:8,
-                                fontFamily: 'IRANSansMobile',
-                                backgroundColor: '#fff',
-                                color: '#777',
-                                textAlign: 'center',
-                                // borderRadius:20
-                            }}>
-                                سفارش های در حال آماده سازی
-                            </Text>
 
-                            <View style={{height: 160, marginTop: 20}}>
-                                <ScrollView
-                                    horizontal={true}
-                                    showsHorizontalScrollIndicator={false}
-                                >
-                                    <View style={{
-                                        height: 160,
-                                        width: 130,
-                                        marginLeft: 10,
-                                        borderWidth: 1,
-                                        borderColor: '#dddddd',
-                                        borderRadius: 10
-                                    }}>
-                                        <View style={{flex: 3,}}>
-                                            <Image source={require('../../../../assets/images/1.jpg')}
-                                                   style={{
-                                                       flex: 1,
-                                                       borderRadius: 10,
-                                                       marginLeft: 4,
-                                                       marginRight: 4,
-                                                       marginTop: 4,
-                                                       width: null,
-                                                       height: null,
-                                                       resizeMode: 'cover'
-                                                   }}
-                                            />
-                                        </View>
-                                        <View style={{
-                                            flex: 1,
-                                            paddingLeft: 10,
-                                            paddingTop: 2,
-                                            marginBottom:5
 
-                                        }}>
-                                            <Text
-                                                style={{textAlign: 'center',fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12, color: '#777777'}}>
-                                                شکلات</Text>
-                                            <Text
-                                                style={{color:'#de481e', textAlign: 'left', fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12,}}>
-                                                <FontAwesomeIcon icon={faClock} style={{color:'#de481e'}}/> 1 روز مانده
-                                            </Text>
-                                        </View>
-
-                                    </View>
-                                    <View style={{
-                                        height: 160,
-                                        width: 130,
-                                        marginLeft: 10,
-                                        borderWidth: 1,
-                                        borderColor: '#dddddd',
-                                        borderRadius: 10
-                                    }}>
-                                        <View style={{flex: 3,}}>
-                                            <Image source={require('../../../../assets/images/2.jpg')}
-                                                   style={{
-                                                       flex: 1,
-                                                       borderRadius: 10,
-                                                       marginLeft: 4,
-                                                       marginRight: 4,
-                                                       marginTop: 4,
-                                                       width: null,
-                                                       height: null,
-                                                       resizeMode: 'cover'
-                                                   }}
-                                            />
-                                        </View>
-                                        <View style={{
-                                            flex: 1,
-                                            paddingLeft: 10,
-                                            paddingTop: 2,
-                                            marginBottom:5
-
-                                        }}>
-                                            <Text
-                                                style={{textAlign: 'center',fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12, color: '#777777'}}>
-                                                شکلات</Text>
-                                            <Text
-                                                style={{color:'#de481e', textAlign: 'left', fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12,}}>
-                                                <FontAwesomeIcon icon={faClock} style={{color:'#de481e'}}/> 2 روز مانده
-                                            </Text>
-                                        </View>
-
-                                    </View>
-                                    <View style={{
-                                        height: 160,
-                                        width: 130,
-                                        marginLeft: 10,
-                                        borderWidth: 1,
-                                        borderColor: '#dddddd',
-                                        borderRadius: 10
-                                    }}>
-                                        <View style={{flex: 3,}}>
-                                            <Image source={require('../../../../assets/images/3.jpg')}
-                                                   style={{
-                                                       flex: 1,
-                                                       borderRadius: 10,
-                                                       marginLeft: 4,
-                                                       marginRight: 4,
-                                                       marginTop: 4,
-                                                       width: null,
-                                                       height: null,
-                                                       resizeMode: 'cover'
-                                                   }}
-                                            />
-                                        </View>
-                                        <View style={{
-                                            flex: 1,
-                                            paddingLeft: 10,
-                                            paddingTop: 2,
-                                            marginBottom:5
-
-                                        }}>
-                                            <Text
-                                                style={{textAlign: 'center',fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12, color: '#777777'}}>
-                                                شکلات</Text>
-                                            <Text
-                                                style={{color:'#de481e', textAlign: 'left', fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12,}}>
-                                                <FontAwesomeIcon icon={faClock} style={{color:'#de481e'}}/> 2 روز مانده
-                                            </Text>
-                                        </View>
-
-                                    </View>
-                                    <View style={{
-                                        height: 160,
-                                        width: 130,
-                                        marginLeft: 10,
-                                        borderWidth: 1,
-                                        borderColor: '#dddddd',
-                                        borderRadius: 10
-                                    }}>
-                                        <View style={{flex: 3,}}>
-                                            <Image source={require('../../../../assets/images/3.jpg')}
-                                                   style={{
-                                                       flex: 1,
-                                                       borderRadius: 10,
-                                                       marginLeft: 4,
-                                                       marginRight: 4,
-                                                       marginTop: 4,
-                                                       width: null,
-                                                       height: null,
-                                                       resizeMode: 'cover'
-                                                   }}
-                                            />
-                                        </View>
-                                        <View style={{
-                                            flex: 1,
-                                            paddingLeft: 10,
-                                            paddingTop: 2,
-                                            marginBottom:5
-
-                                        }}>
-                                            <Text
-                                                style={{textAlign: 'center',fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12, color: '#777777'}}>
-                                                شکلات</Text>
-                                            <Text
-                                                style={{color:'#de481e', textAlign: 'left', fontFamily: 'IRANSansMobile(FaNum)', fontSize: 12,}}>
-                                                <FontAwesomeIcon icon={faClock} style={{color:'#de481e'}}/> 5 روز مانده
-                                            </Text>
-                                        </View>
-
-                                    </View>
-                                </ScrollView>
-                            </View>
-
-                        </View>
                     </ScrollView>
-                    <View style={{height:50,justifyContent:'center',alignItems:'center',backgroundColor:'#de481e'}}>
-
-                        <TouchableOpacity style={{flex:1,flexDirection:'row'}}>
-                            <View style={{flex:2,justifyContent:'center',alignItems:'flex-end'}}>
-                                <Text style={{color:'white',fontFamily: 'IRANSansMobile'}}>  ثبت محصول جدید</Text>
-
-                            </View>
-                            <View style={{flex:1,justifyContent:'center',alignItems:'flex-start'}}>
-                                <FontAwesomeIcon icon={faPlusCircle} size={25} style={{color:'white'}}/>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
                 </View>
+{/*<Footer/>*/}
+
             </SafeAreaView>
+
         );
     }
 }

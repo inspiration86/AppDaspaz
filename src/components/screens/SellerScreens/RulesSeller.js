@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     View,
     StyleSheet,
-    Text,
+    Text, TouchableOpacity,
 } from 'react-native';
 import {
     Container,
@@ -12,6 +12,9 @@ import {
     Body,
     Left,
 } from 'native-base';
+import {DrawerActions} from "react-navigation-drawer";
+
+
 export default class RulesSeller extends Component {
     render() {
         return (
@@ -60,6 +63,7 @@ export default class RulesSeller extends Component {
                         </Card>
                     </View>
                 </Content>
+
             </Container>
         );
     }

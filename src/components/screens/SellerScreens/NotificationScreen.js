@@ -7,6 +7,8 @@ import {
   FlatList
 } from 'react-native';
 import { Avatar, Card, IconButton } from 'react-native-paper';
+import Footer from '../../../components/layouts/Footer';
+
 class NotificationScreen extends Component {
 
   constructor(props) {
@@ -135,6 +137,7 @@ class NotificationScreen extends Component {
                             </Card>
                           </View>
                       )}}/>
+
         </View>
     );
   }
@@ -142,6 +145,7 @@ class NotificationScreen extends Component {
 
 const styles = StyleSheet.create({
   container:{
+    flex:1,
     backgroundColor:'#DCDCDC'
   },
   notificationList:{

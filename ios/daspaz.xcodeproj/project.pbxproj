@@ -70,6 +70,7 @@
 		E6C8363B21114CE3B0C26A6C /* IRANSansMobile(FaNum)_Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AB5877248BF413EA36B19C4 /* IRANSansMobile(FaNum)_Medium.ttf */; };
 		730CF09C5E7B46FBB0375018 /* IRANSansMobile(FaNum)_UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52DD6652A70F4923A7C4842B /* IRANSansMobile(FaNum)_UltraLight.ttf */; };
 		08365E930A7B44F383C1A908 /* IRANSansMobile(FaNum).ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4677300E4BA8400FAC50A3AA /* IRANSansMobile(FaNum).ttf */; };
+		93764309EE0F42E9B92D5379 /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D031E27343DE4A048648DF07 /* DancingScript-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		2AB5877248BF413EA36B19C4 /* IRANSansMobile(FaNum)_Medium.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile(FaNum)_Medium.ttf"; path = "../assets/fonts/IRANSansMobile(FaNum)_Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		52DD6652A70F4923A7C4842B /* IRANSansMobile(FaNum)_UltraLight.ttf */ = {isa = PBXFileReference; name = "IRANSansMobile(FaNum)_UltraLight.ttf"; path = "../assets/fonts/IRANSansMobile(FaNum)_UltraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		4677300E4BA8400FAC50A3AA /* IRANSansMobile(FaNum).ttf */ = {isa = PBXFileReference; name = "IRANSansMobile(FaNum).ttf"; path = "../assets/fonts/IRANSansMobile(FaNum).ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D031E27343DE4A048648DF07 /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "DancingScript-VariableFont_wght.ttf"; path = "../assets/fonts/DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 				2AB5877248BF413EA36B19C4 /* IRANSansMobile(FaNum)_Medium.ttf */,
 				52DD6652A70F4923A7C4842B /* IRANSansMobile(FaNum)_UltraLight.ttf */,
 				4677300E4BA8400FAC50A3AA /* IRANSansMobile(FaNum).ttf */,
+				D031E27343DE4A048648DF07 /* DancingScript-VariableFont_wght.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				E6C8363B21114CE3B0C26A6C /* IRANSansMobile(FaNum)_Medium.ttf in Resources */,
 				730CF09C5E7B46FBB0375018 /* IRANSansMobile(FaNum)_UltraLight.ttf in Resources */,
 				08365E930A7B44F383C1A908 /* IRANSansMobile(FaNum).ttf in Resources */,
+				93764309EE0F42E9B92D5379 /* DancingScript-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

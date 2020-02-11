@@ -65,10 +65,10 @@ export default class HomeScreen extends Component {
                     </View>
                     <View style={styles.buttonContainer}>
                         <Animated.View style={{ transform: [{ scale: scaleText }] }}>
-                            <Button style={styles.buttonstyle}  rounded onPress={() => this.props.navigation.push('SellerLogin')} ><Text style={{color:'#fff', fontFamily: 'IRANSansMobile',}}>ویژه همکاران</Text></Button>
+                            <Button style={styles.buttonstyle}  rounded onPress={() => this.props.navigation.push('RegisterSellerUser')} ><Text style={{color:'#fff', fontFamily: 'IRANSansMobile(FaNum)',}}>ویژه همکاران</Text></Button>
                         </Animated.View>
                         <Animated.View style={{ transform: [{ scale: scaleText }] }}>
-                            <Button style={styles.buttonstyle}   rounded ><Text >ویژه مشتربان</Text></Button>
+                            <Button style={styles.buttonstyle}   rounded onPress={() => this.props.navigation.push('AppLoginRegisterCustomer')}><Text style={{color:'#fff', fontFamily: 'IRANSansMobile(FaNum)',}}>ویژه مشتربان</Text></Button>
                         </Animated.View>
                     </View>
 
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     },
     textStyle:{
         flex:1,
-        fontFamily: 'IRANSansMobile',
+        fontFamily: 'IRANSansMobile(FaNum)',
         fontSize:18,
         color:'red'
     }

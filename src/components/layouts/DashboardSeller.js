@@ -1,7 +1,8 @@
 import {Image, View, Button, StyleSheet, ScrollView, Text, ImageBackground} from "react-native";
-import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
-import {createAppContainer} from 'react-navigation';
+import {createDrawerNavigator, DrawerItems,DrawerActions} from 'react-navigation-drawer';
+import {createAppContainer,} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
     faBalanceScale,
@@ -10,27 +11,39 @@ import {
     faComment,
     faCreditCard,
     faEdit, faFunnelDollar,
-    faHome, faMoneyBill, faPhone, faRubleSign, faSkiing, faTasks
+    faHome, faListAlt, faMoneyBill, faPhone, faPlusCircle, faRubleSign, faSkiing, faTasks
 } from "@fortawesome/free-solid-svg-icons";
 import {Avatar} from 'react-native-paper';
 import NotificationScreen from '../screens/SellerScreens/NotificationScreen';
-import SefareshtScreen from '../screens/SefareshatScreen';
+import OrderCustomer from '../screens/SellerScreens/OrderCustomer';
+import OrderPreparationCustomer from '../screens/SellerScreens/OrderPreparationCustomer';
+import AbilityProduct from '../screens/SellerScreens/AbilityProduct';
+import OrderNewCustomer from '../screens/SellerScreens/OrderNewCustomer';
+
 import HomeScreen from "../screens/SellerScreens/HomeScreen";
+import RegisterProducts from "../screens/SellerScreens/RegisterProducts";
 import RulesSeller from "../screens/SellerScreens/RulesSeller";
 import React from "react";
 import {Body, Footer, Header, Icon, Left, Right} from "native-base";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import Divider from "react-native-material-ui/src/Divider";
-
+import B from './BottomTabNavigator';
+import {createBottomTabNavigator } from "react-navigation-tabs";
+import Badge from "react-native-material-ui/src/Badge";
+import {transparent} from "react-native-material-ui/src/styles/colors";
+// import {Ionicons} from 'react-native-ionicons';
 const Navigator = (NameScreen, TitleScreen) => createStackNavigator({
-        Home: NameScreen
+        Home: NameScreen,
+
     },
+
     {
         defaultNavigationOptions: ({navigation}) => {
             return {
+
                 title: TitleScreen,
                 headerStyle: {
-                    backgroundColor: '#de481e',
+                    backgroundColor: '#ff4500',
                     color: '#ffffff',
                     fontFamily: 'IRANSansMobile'
 
@@ -41,28 +54,30 @@ const Navigator = (NameScreen, TitleScreen) => createStackNavigator({
                     color: '#ffffff',
                     fontSize: 16
                 },
+
                 headerRight: (
 
                     <FontAwesomeIcon icon={faBars} size={20} style={{color: '#ffffff', marginRight: 20}}
-                                     onPress={() => navigation.openDrawer()}/>
+                                     onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
 
                 )
             }
+
 
         }
     });
 const CustomDrawerComponent = props => (
     <View style={{flex: 1}}>
         <Header style={styles.container}>
-            {/*<ImageBackground*/}
-            {/*    source={require('../../../assets/images/HeaderSeller.jpg')}*/}
-            {/*    style={{width: '100%', height: '100%'}}*/}
-            {/*    resizeMode="stretch"></ImageBackground>*/}
+            <ImageBackground
+                source={require('../../../assets/images/HeaderSeller.jpg')}
+                style={{width: '110%', height: '110%'}}
+                resizeMode="stretch">
             <View style={{flex: 1, flexDirection: 'column'}}>
-                <View style={{flex: 2, justifyContent: 'center', alignItems: 'center', marginTop: 10}}>
-                    <Avatar.Image size={75} source={require('../../../assets/images/HeaderSellerAwater.jpg')}/>
+                <View style={{flex: 2, justifyContent: 'center', alignItems: 'flex-end', marginTop: 10,marginLeft:30}}>
+                    <Avatar.Image size={75} style={{marginRight:100}} source={require('../../../assets/images/logo12.png')}/>
                 </View>
-                <View style={{flexDirection: 'row-reverse', flex: 1}}>
+                <View style={{flexDirection: 'row-reverse', flex: 1,backgroundColor:'#777',paddingHorizontal:10}}>
                     <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
                         <Text style={{color: '#fff', fontFamily: 'IRANSansMobile',}}>پروفایل من</Text>
                     </View>
@@ -71,10 +86,8 @@ const CustomDrawerComponent = props => (
                     </View>
                 </View>
             </View>
-            {/*<Image*/}
-            {/*    source={require('../../../assets/images/logo1.png')}*/}
-            {/*    style={styles.containerimage}*/}
-            {/*/>*/}
+            </ImageBackground>
+
         </Header>
 
         <ScrollView>
@@ -114,10 +127,10 @@ const CustomDrawerComponent = props => (
 );
 const styles = StyleSheet.create({
     container: {
-        height: 150,
+        height: 220,
         // flex:1,
         // flexDirection:'row',
-        backgroundColor: '#de481e',
+        backgroundColor: 'transparent',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -145,10 +158,10 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     containerfooter: {
-        backgroundColor: '#de481e',
+        backgroundColor: '#ff4500',
         borderTopWidth: 1,
         // height:100,
-        borderTopColor: '#de481e',
+        borderTopColor: '#ff4500',
         flexDirection: 'row',
         justifyContent: 'space-around',
     },
@@ -199,11 +212,10 @@ const MyDrawerNavigator = createDrawerNavigator({
                     </View>
                 ),
 
-
             }
         },
         'سفارشات مشتري': {
-            screen: Navigator(SefareshtScreen, 'سفارشات مشتري '),
+            screen: Navigator(OrderCustomer, 'سفارشات مشتري '),
             navigationOptions: {
                 drawerLabel: (
                     <View style={{flex: 1, flexDirection: 'row'}}>
@@ -219,13 +231,30 @@ const MyDrawerNavigator = createDrawerNavigator({
 
             }
         },
-        'سفارشات در حال آماده سازي': {
-            screen: Navigator(HomeScreen, 'سفارشات در حال آماده سازي'),
+        'لیست محصولات': {
+            screen: Navigator(AbilityProduct, 'لیست محصولات'),
             navigationOptions: {
                 drawerLabel: (
                     <View style={{flex: 1, flexDirection: 'row'}}>
                         <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
-                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>سفارشات در حال آماده سازي </Text>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>لیست محصولات </Text>
+                        </View>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faListAlt} size={20} style={{color: '#777777'}}/>
+                        </View>
+                    </View>
+                ),
+
+
+            }
+        },
+        'سفارشات در حال آماده سازي': {
+            screen: Navigator(OrderPreparationCustomer, 'سفارشات در حال آماده سازي'),
+            navigationOptions: {
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row',}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777',}}>سفارشات در حال آماده سازي </Text>
                         </View>
                         <View style={{flex: 2}}>
                             <Icon
@@ -259,7 +288,7 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'ثبت توانايي ها': {
-            screen: Navigator(HomeScreen, 'ثبت توانايي ها'),
+            screen: Navigator(AbilityProduct, 'ثبت توانايي ها'),
             navigationOptions: {
                 drawerLabel: (
                     <View style={{flex: 1, flexDirection: 'row'}}>
@@ -310,23 +339,27 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
 
+
     },
     {
         drawerPosition: 'right',
         drawerWidth: 250,
+
         contentComponent: CustomDrawerComponent,
         contentOptions: {
-            // activeTintColor: '#fff',
-            // inactiveTintColor: '#777777',
-            // activeBackgroundColor: '#F06',
-            inactiveBackgroundColor: '#ffff',
+
+            // activeTintColor: 'red',
+            inactiveTintColor: '#fff',
+            activeBackgroundColor: '#e0e0e0',
+            // inactiveBackgroundColor: '#ffff',
+
             itemsContainerStyle: {
-                // marginHorizontal: 8,
+               backgroundColor:'#fff',
                 border: 10,
             },
             labelStyle: {
                 fontSize: 15,
-                fontFamily: 'IRANSansMobile',
+                fontFamily: 'IRANSansMobile(FaNum)',
             },
             itemStyle: {
                 height: 60,
@@ -335,6 +368,61 @@ const MyDrawerNavigator = createDrawerNavigator({
             },
 
         },
-    });
 
-export default createAppContainer(MyDrawerNavigator);
+    });
+const AppTabNavigator = createBottomTabNavigator({
+        OrderNew: {screen: Navigator(OrderNewCustomer, 'سفارش های جدید'),
+    navigationOptions: {
+        title: 'سفارش های جدید',
+
+        tabBarIcon: ({ tintColor,focused  }) => (
+
+            <Icon
+                type="FontAwesome"
+                name="cutlery"
+                style={{fontSize: 30,color:tintColor,}}
+            />
+        )
+    },
+      },
+        ProductNew: {screen: Navigator(RegisterProducts, 'افزودن محصول'),
+            navigationOptions: {
+                tabBarLabel: ' ',
+                tabBarIcon: ({ tintColor,focused  }) => (
+                    <FontAwesomeIcon icon={faPlusCircle} size={60} color={tintColor} style={{marginTop:30}} />
+                )
+            }},
+        Home:{screen: MyDrawerNavigator, navigationOptions: {
+                title: 'صفحه اصلی',
+                tabBarIcon: ({ tintColor,focused  }) => (
+                    <FontAwesomeIcon icon={faHome} color={tintColor} size={30}/>
+                )
+            }},
+
+},
+    {
+        tabBarOptions: {
+            showIcon: true,
+
+            activeTintColor:'#ff4500',
+
+            inactiveTintColor:'#bdbdbd',
+            style:{
+               height:70,
+
+                backgroundColor:'#fff',
+                // borderTopWidth:1,
+
+                // borderTopColor:'#D3D3D3'
+            },
+
+            labelStyle:{
+                fontFamily: 'IRANSansMobile(FaNum)',
+                fontSize:13,
+            }
+        },
+       initialRouteName:'Home'
+    }
+);
+
+export default createAppContainer(AppTabNavigator);
