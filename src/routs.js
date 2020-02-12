@@ -3,6 +3,7 @@ import SellerLogin from "./components/screens/SellerScreens/Login/ReduxLogin";
 import CustomerLogin from './components/screens/CustomerLogin';
 import Splash from './components/screens/Splash';
 import SelectUser from './components/screens/SelectUser';
+import SettingProfileSeller from "./components/screens/SellerScreens/SettingProfileSeller";
 import RegisterSellerUser from "./components/screens/SellerScreens/Register/ReduxRegister";
 import DashboardSeller from './components/layouts/DashboardSeller';
 import RegisterProductsSeller from "./components/screens/SellerScreens/RegisterProducts";
@@ -13,6 +14,10 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 const RootStack = createStackNavigator({
 
         DashboardSeller: {screen: DashboardSeller,
+            navigationOptions: ({navigation}) => ({
+                header: null,
+            })},
+        SettingProfileSeller: {screen: SettingProfileSeller,
             navigationOptions: ({navigation}) => ({
                 header: null,
             })},

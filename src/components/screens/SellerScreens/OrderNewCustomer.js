@@ -4,13 +4,12 @@ import {
     Text,
     View,
     Image,
-    FlatList, ScrollView
+    FlatList, ScrollView, TextInput
 } from 'react-native';
-import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
+import {Avatar, Button, Card, Title, Paragraph, Dialog, Portal, Provider, RadioButton} from 'react-native-paper';
 import Divider from "react-native-material-ui/src/Divider";
-
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faClock, faUser} from "@fortawesome/free-solid-svg-icons";
+import {Container, Header, Textarea, ListItem, Radio, Right, Left} from 'native-base';
+import {Switcher, RadioGroup} from 'nachos-ui'
 
 class OrderCustomer extends Component {
 
@@ -18,7 +17,10 @@ class OrderCustomer extends Component {
         super(props);
         // const ds = new FlatList.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
+            visible: false,
+            checked: 'first',
             data: [
+
                 // dataSource: ds.cloneWithRows([
                 {
                     Product_name: 'شیرینی',
@@ -124,7 +126,12 @@ class OrderCustomer extends Component {
         };
     }
 
+    _showDialog = () => this.setState({visible: true});
+
+    _hideDialog = () => this.setState({visible: false});
+
     render() {
+        const {checked} = this.state;
         return (
             <View style={styles.container}>
                 <FlatList style={styles.notificationList} enableEmptySections={true}
@@ -136,16 +143,23 @@ class OrderCustomer extends Component {
                               return (
                                   <View>
                                       <Card style={{marginBottom: 10}}>
-                                          <Card.Title  title={item.Product_name} titleStyle={{
+                                          <Card.Title title={item.Product_name} titleStyle={{
                                               fontSize: 14,
                                               textAlign: 'center',
                                               fontFamily: 'IRANSansMobile(FaNum)',
                                           }} subtitle={<Text
                                               style={{color: 'green', fontSize: 14,}}>{item.sub_Product}</Text>}
-                                                      subtitleStyle={{fontFamily: 'IRANSansMobile(FaNum)',textAlign: 'center',}}
-                                                      left={(props) =><Text
-                                                          style={{color: 'green', fontSize: 14,fontFamily: 'IRANSansMobile(FaNum)',}}>{item.count}</Text>}
-                                                      right={(props) => <Avatar.Image  source={(item.image)}
+                                                      subtitleStyle={{
+                                                          fontFamily: 'IRANSansMobile(FaNum)',
+                                                          textAlign: 'center',
+                                                      }}
+                                                      left={(props) => <Text
+                                                          style={{
+                                                              color: 'green',
+                                                              fontSize: 14,
+                                                              fontFamily: 'IRANSansMobile(FaNum)',
+                                                          }}>{item.count}</Text>}
+                                                      right={(props) => <Avatar.Image source={(item.image)}
                                                                                       size={60}
                                                                                       style={{marginHorizontal: 10,}}/>}/>
                                           <Divider/>
@@ -166,7 +180,8 @@ class OrderCustomer extends Component {
                                           </Card.Content>
                                           <Divider/>
                                           <Card.Actions style={{justifyContent: 'center', marginHorizontal: 5}}>
-                                              <Button style={{backgroundColor: '#ff4444',marginRight: 3}}>
+                                              <Button style={{backgroundColor: '#ff4444', marginRight: 3}}
+                                                      onPress={this._showDialog}>
                                                   <Text style={{
                                                       fontFamily: 'IRANSansMobile(FaNum)',
                                                       color: '#fff',
@@ -186,8 +201,65 @@ class OrderCustomer extends Component {
                                   </View>
                               )
                           }}/>
+                <Provider>
+                    <Portal>
+                        <Dialog
+                            visible={this.state.visible}
+                            onDismiss={this._hideDialog}>
+                            <Dialog.Title
+                                style={{fontSize: 15, textAlign: 'center', fontFamily: 'IRANSansMobile(FaNum)'}}>دلیل
+                                نپذیرفتن سفارش مشتری را وارد کنید:</Dialog.Title>
+                            <Dialog.Content>
+                                <ListItem>
+                                    <Left
+                                        style={{fontSize: 13, textAlign: 'right', fontFamily: 'IRANSansMobile(FaNum)'}}>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            textAlign: 'right',
+                                            fontFamily: 'IRANSansMobile(FaNum)'
+                                        }}> تحویل محصول در تاریخ و ساعت مورد نظر مشتری امکان پذیر نبود.</Text>
+                                    </Left>
+                                    <Right>
+                                        <Radio selected={false}/>
+                                    </Right>
+                                </ListItem>
+                                <ListItem>
+                                    <Left>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            textAlign: 'right',
+                                            fontFamily: 'IRANSansMobile(FaNum)'
+                                        }}> تحویل محصول با حجم مورد نظر مشتری امکان پذیر نبود.</Text>
+                                    </Left>
+                                    <Right>
+                                        <Radio selected={true}/>
+                                    </Right>
+                                </ListItem>
 
 
+                                <View style={{flexDirection:'row-reverse'}}>
+                                    <View style={{flex:1}}>
+                                    <RadioButton style={{justifyContent:'center',alignSelf:'flex-start'}}/>
+                                    </View>
+                                    <View style={{flex:1,justifyContent:'center',alignSelf:'flex-start'}}>
+                                   <Text  style={{fontSize: 13, textAlign: 'right', fontFamily: 'IRANSansMobile(FaNum)'}}>دلایل دیگر:</Text>
+                                    </View>
+                                </View>
+                                <Textarea
+                                    style={{fontSize: 13, textAlign: 'right', fontFamily: 'IRANSansMobile(FaNum)'}}
+                                    rowSpan={5} bordered placeholder="توضیحات ..."/>
+
+
+                            </Dialog.Content>
+                            <Dialog.Actions
+                                style={{fontSize: 12, alignSelf: 'flex-start', fontFamily: 'IRANSansMobile(FaNum)'}}>
+                                <Button onPress={this._hideDialog}>
+                                    <Text style={{fontSize: 12, fontFamily: 'IRANSansMobile(FaNum)'}}> تائید</Text>
+                                </Button>
+                            </Dialog.Actions>
+                        </Dialog>
+                    </Portal>
+                </Provider>
             </View>
         );
     }

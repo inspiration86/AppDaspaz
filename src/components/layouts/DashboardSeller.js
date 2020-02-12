@@ -11,7 +11,7 @@ import {
     faComment,
     faCreditCard,
     faEdit, faFunnelDollar,
-    faHome, faListAlt, faMoneyBill, faPhone, faPlusCircle, faRubleSign, faSkiing, faTasks
+    faHome, faListAlt, faMoneyBill, faPhone, faPlusCircle, faRubleSign, faSkiing, faTasks, faUser
 } from "@fortawesome/free-solid-svg-icons";
 import {Avatar} from 'react-native-paper';
 import NotificationScreen from '../screens/SellerScreens/NotificationScreen';
@@ -19,7 +19,7 @@ import OrderCustomer from '../screens/SellerScreens/OrderCustomer';
 import OrderPreparationCustomer from '../screens/SellerScreens/OrderPreparationCustomer';
 import AbilityProduct from '../screens/SellerScreens/AbilityProduct';
 import OrderNewCustomer from '../screens/SellerScreens/OrderNewCustomer';
-
+import SettingProfileSeller from "../screens/SellerScreens/SettingProfileSeller";
 import HomeScreen from "../screens/SellerScreens/HomeScreen";
 import RegisterProducts from "../screens/SellerScreens/RegisterProducts";
 import RulesSeller from "../screens/SellerScreens/RulesSeller";
@@ -60,7 +60,7 @@ const Navigator = (NameScreen, TitleScreen) => createStackNavigator({
                     <FontAwesomeIcon icon={faBars} size={20} style={{color: '#ffffff', marginRight: 20}}
                                      onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
 
-                )
+                ),
             }
 
 
@@ -71,20 +71,20 @@ const CustomDrawerComponent = props => (
         <Header style={styles.container}>
             <ImageBackground
                 source={require('../../../assets/images/HeaderSeller.jpg')}
-                style={{width: '110%', height: '110%'}}
+                style={{width: '109%', height: '110%'}}
                 resizeMode="stretch">
             <View style={{flex: 1, flexDirection: 'column'}}>
                 <View style={{flex: 2, justifyContent: 'center', alignItems: 'flex-end', marginTop: 10,marginLeft:30}}>
                     <Avatar.Image size={75} style={{marginRight:100}} source={require('../../../assets/images/logo12.png')}/>
                 </View>
-                <View style={{flexDirection: 'row-reverse', flex: 1,backgroundColor:'#777',paddingHorizontal:10}}>
-                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                        <Text style={{color: '#fff', fontFamily: 'IRANSansMobile',}}>پروفایل من</Text>
-                    </View>
-                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-start'}}>
-                        <Text style={{color: '#fff', fontFamily: 'IRANSansMobile',}}>خروج</Text>
-                    </View>
-                </View>
+                {/*<View style={{flexDirection: 'row-reverse', flex: 1,backgroundColor:'#777',paddingHorizontal:10}}>*/}
+                {/*    <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>*/}
+                {/*        <Text style={{color: '#fff', fontFamily: 'IRANSansMobile',}} onPress={()=>alert('ss')}>پروفایل من</Text>*/}
+                {/*    </View>*/}
+                {/*    <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-start'}}>*/}
+                {/*        <Text style={{color: '#fff', fontFamily: 'IRANSansMobile',}}>خروج</Text>*/}
+                {/*    </View>*/}
+                {/*</View>*/}
             </View>
             </ImageBackground>
 
@@ -127,7 +127,7 @@ const CustomDrawerComponent = props => (
 );
 const styles = StyleSheet.create({
     container: {
-        height: 220,
+        height: 210,
         // flex:1,
         // flexDirection:'row',
         backgroundColor: 'transparent',
@@ -177,6 +177,28 @@ const styles = StyleSheet.create({
 });
 
 const MyDrawerNavigator = createDrawerNavigator({
+        'پروفایل من': {
+            screen: Navigator(SettingProfileSeller, 'پروفایل من '),
+
+            navigationOptions: {
+                drawerLabel: (
+                    <View style={{flex: 1, flexDirection: 'row'}}>
+                        <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>پروفایل من  </Text>
+                        </View>
+                        <View style={{flex: 2}}>
+                            <FontAwesomeIcon icon={faUser} size={20} style={{color: '#777777'}}/>
+                        </View>
+                    </View>
+                ),
+
+
+            },
+            contentOptions: {
+                activeTintColor: '#fff',
+            }
+        },
+
         'صفحه اصلی': {
             screen: Navigator(HomeScreen, 'صفحه اصلی'),
 
@@ -344,7 +366,7 @@ const MyDrawerNavigator = createDrawerNavigator({
     {
         drawerPosition: 'right',
         drawerWidth: 250,
-
+        initialRouteName:  'صفحه اصلی',
         contentComponent: CustomDrawerComponent,
         contentOptions: {
 
