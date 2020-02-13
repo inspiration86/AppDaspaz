@@ -10,8 +10,20 @@ import {
     faBell,
     faComment,
     faCreditCard,
-    faEdit, faFunnelDollar,
-    faHome, faListAlt, faMoneyBill, faPhone, faPlusCircle, faRubleSign, faSkiing, faTasks, faUser
+    faEdit,
+    faFunnelDollar,
+    faHome,
+    faLayerGroup,
+    faListAlt,
+    faMoneyBill,
+    faPhone,
+    faPlusCircle,
+    faRubleSign,
+    faSign,
+    faSignOutAlt,
+    faSkiing,
+    faTasks,
+    faUser, faUsers
 } from "@fortawesome/free-solid-svg-icons";
 import {Avatar} from 'react-native-paper';
 import NotificationScreen from '../screens/SellerScreens/NotificationScreen';
@@ -23,6 +35,7 @@ import SettingProfileSeller from "../screens/SellerScreens/SettingProfileSeller"
 import HomeScreen from "../screens/SellerScreens/HomeScreen";
 import RegisterProducts from "../screens/SellerScreens/RegisterProducts";
 import RulesSeller from "../screens/SellerScreens/RulesSeller";
+import AboutUsSeller from "../screens/SellerScreens/About-Us-Seller";
 import React from "react";
 import {Body, Footer, Header, Icon, Left, Right} from "native-base";
 import {TouchableOpacity} from "react-native-gesture-handler";
@@ -71,7 +84,7 @@ const CustomDrawerComponent = props => (
         <Header style={styles.container}>
             <ImageBackground
                 source={require('../../../assets/images/HeaderSeller.jpg')}
-                style={{width: '109%', height: '110%'}}
+                style={{width: '109%', height: '100%'}}
                 resizeMode="stretch">
             <View style={{flex: 1, flexDirection: 'column'}}>
                 <View style={{flex: 2, justifyContent: 'center', alignItems: 'flex-end', marginTop: 10,marginLeft:30}}>
@@ -95,39 +108,27 @@ const CustomDrawerComponent = props => (
         </ScrollView>
 
         <Footer style={styles.containerfooter}>
-            <View style={styles.containerview}>
-                <TouchableOpacity>
-                    <Icon type="FontAwesome" name="send-o" style={styles.containericon}/>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Icon
-                        type="FontAwesome"
-                        name="instagram"
-                        style={styles.containericon}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Icon
-                        type="FontAwesome"
-                        name="globe"
-                        style={styles.containericon}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Icon
-                        type="FontAwesome"
-                        name="twitter"
-                        style={styles.containericon}
-                    />
-                </TouchableOpacity>
-            </View>
+            {/*<View style={styles.containerview}>*/}
+            {/*    <TouchableOpacity>*/}
+            {/*        <Text style={{fontSize:16,color:'#777',fontFamily: 'IRANSansMobile(FaNum)',marginRight:20}}>*/}
+            {/*             <FontAwesomeIcon icon={faSignOutAlt} style={styles.containericon}/>خروج</Text>*/}
+            {/*    </TouchableOpacity>*/}
 
+            {/*</View>*/}
+            <View style={{flexDirection: 'row-reverse', flex: 1,backgroundColor:'#eeeeee',paddingHorizontal:10}}>
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end',marginHorizontal:20}}>
+                    <Text> <FontAwesomeIcon icon={faSignOutAlt} style={styles.containericon}/></Text>
+                </View>
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+                    <Text style={{color: '#777', fontFamily: 'IRANSansMobile',}}>خروج</Text>
+                </View>
+            </View>
         </Footer>
     </View>
 );
 const styles = StyleSheet.create({
     container: {
-        height: 210,
+        height: 180,
         // flex:1,
         // flexDirection:'row',
         backgroundColor: 'transparent',
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     containericon: {
-        color: '#ffff',
+        color: '#777',
         fontSize: 30,
     },
     containerview1: {
@@ -158,10 +159,10 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     containerfooter: {
-        backgroundColor: '#ff4500',
+        backgroundColor: '#eeeeee',
         borderTopWidth: 1,
         // height:100,
-        borderTopColor: '#ff4500',
+        borderTopColor: '#eeeeee',
         flexDirection: 'row',
         justifyContent: 'space-around',
     },
@@ -343,16 +344,17 @@ const MyDrawerNavigator = createDrawerNavigator({
 
             }
         },
-        'تماس با ما': {
-            screen: Navigator(HomeScreen, 'تماس با ما'),
+        'درباره ما': {
+            screen: Navigator(AboutUsSeller, 'درباره ما'),
             navigationOptions: {
+
                 drawerLabel: (
                     <View style={{flex: 1, flexDirection: 'row'}}>
                         <View style={{flex: 9, justifyContent: 'center', alignItems: 'center'}}>
-                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>تماس با ما </Text>
+                            <Text style={{fontFamily: 'IRANSansMobile', color: '#777777'}}>درباره ما </Text>
                         </View>
                         <View style={{flex: 2}}>
-                            <FontAwesomeIcon icon={faPhone} size={20} style={{color: '#777777'}}/>
+                            <FontAwesomeIcon icon={faUsers} size={20} style={{color: '#777777'}}/>
                         </View>
                     </View>
                 ),
