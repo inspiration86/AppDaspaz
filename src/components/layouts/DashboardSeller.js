@@ -34,6 +34,7 @@ import OrderNewCustomer from '../screens/SellerScreens/OrderNewCustomer';
 import SettingProfileSeller from "../screens/SellerScreens/SettingProfileSeller";
 import HomeScreen from "../screens/SellerScreens/HomeScreen";
 import RegisterProducts from "../screens/SellerScreens/RegisterProducts";
+import IncomeSeller from "../screens/SellerScreens/IncomeSeller";
 import RulesSeller from "../screens/SellerScreens/RulesSeller";
 import AboutUsSeller from "../screens/SellerScreens/About-Us-Seller";
 import React from "react";
@@ -294,7 +295,7 @@ const MyDrawerNavigator = createDrawerNavigator({
             }
         },
         'درآمدها': {
-            screen: Navigator(HomeScreen, 'درآمدها'),
+            screen: Navigator(IncomeSeller, 'درآمدها'),
             navigationOptions: {
                 drawerLabel: (
                     <View style={{flex: 1, flexDirection: 'row'}}>
