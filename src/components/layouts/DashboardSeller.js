@@ -368,7 +368,7 @@ const MyDrawerNavigator = createDrawerNavigator({
     },
     {
         drawerPosition: 'right',
-        drawerWidth: 250,
+        drawerWidth: 280,
         initialRouteName:  'صفحه اصلی',
         contentComponent: CustomDrawerComponent,
         contentOptions: {
@@ -405,7 +405,7 @@ const AppTabNavigator = createBottomTabNavigator({
             <Icon
                 type="FontAwesome"
                 name="cutlery"
-                style={{fontSize: 30,color:tintColor,}}
+                style={{fontSize: 20,color:tintColor,paddingTop:10}}
             />
         )
     },
@@ -414,13 +414,13 @@ const AppTabNavigator = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: ({ tintColor,focused  }) => (
-                    <FontAwesomeIcon icon={faPlusCircle} size={60} color={tintColor} style={{marginTop:30}} />
+                    <FontAwesomeIcon icon={faPlusCircle} size={30} color={tintColor} style={{marginTop:30}} />
                 )
             }},
         Home:{screen: MyDrawerNavigator, navigationOptions: {
                 title: 'صفحه اصلی',
                 tabBarIcon: ({ tintColor,focused  }) => (
-                    <FontAwesomeIcon icon={faHome} color={tintColor} size={30}/>
+                    <FontAwesomeIcon icon={faHome} color={tintColor} size={20}/>
                 )
             }},
 
@@ -433,7 +433,7 @@ const AppTabNavigator = createBottomTabNavigator({
 
             inactiveTintColor:'#bdbdbd',
             style:{
-               height:70,
+               height:55,
 
                 backgroundColor:'#fff',
                 // borderTopWidth:1,
