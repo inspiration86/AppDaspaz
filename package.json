@@ -17,7 +17,7 @@
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/bottom-tabs": "^5.0.0",
     "@react-navigation/native": "^5.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "nachos-ui": "^0.2.0-beta.1",
     "native-base": "^2.13.8",
     "react": "16.9.0",
